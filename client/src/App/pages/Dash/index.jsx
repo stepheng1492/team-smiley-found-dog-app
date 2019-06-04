@@ -2,17 +2,15 @@ import React, { useEffect, useState } from 'react'
 import { Typography, Paper, Avatar, CircularProgress, Button } from '@material-ui/core'
 import VerifiedUserOutlined from '@material-ui/icons/VerifiedUserOutlined'
 import withStyles from '@material-ui/core/styles/withStyles'
-// import firebase from '../../firebaseConfig.js'
 import { withRouter, Link } from 'react-router-dom'
 import Pets from '../../components/pets.jsx'
-import Geolocation from '../../components/Geolocation.jsx'
 
 
 
 const styles = theme => ({
     main: {
         width: 'auto',
-        display: 'block', // Fix IE 11 issue.
+        display: 'block',
         marginLeft: theme.spacing(3),
         marginRight: theme.spacing(3),
         [theme.breakpoints.up(400 + theme.spacing(3) * 2)]: {

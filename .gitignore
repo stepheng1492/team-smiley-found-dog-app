@@ -1,4 +1,4 @@
 node_modules
 .env
 client/dist/bundle.js
-client/src/firebaseConfig.js
+client/src/App/firebaseConfig.js
