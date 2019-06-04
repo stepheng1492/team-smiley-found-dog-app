@@ -3,10 +3,7 @@ import { Typography, Paper, Avatar, Button, FormControl, Input, InputLabel } fro
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
 import withStyles from '@material-ui/core/styles/withStyles'
 import 'firebase/auth';
-import { auth, provider } from '../../firebaseConfig.js';
-// import link and withRouter
 import { Link, withRouter } from 'react-router-dom'
-// import gmail login component
 import gmailLogin from '../../components/gmailLogin.jsx'
 
 const styles = theme => ({
