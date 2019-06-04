@@ -75,8 +75,9 @@ router.route('/comments')
     })
     // adds comments to the database
     .post((req, res, next) => {
-        const {message} = req.body;
+        const {message, petId} = req.body;
         Comments.findOrCreate({where: {
+            petId: petId,
             message: message,
         }})
         res.send('comment added');

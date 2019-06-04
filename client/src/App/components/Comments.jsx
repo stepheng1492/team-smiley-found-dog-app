@@ -45,12 +45,11 @@ function Comments(props) {
         axios.get('/comments').then((results) => {
             setState({comments: results.data});
         });
-        console.log('I will run only once');
     }, []);
     const addComment = (comment) => {
-        console.log(comment, 'comment');
         axios.post('/comments', {
-            message: comment
+            petId: props.pet.id,
+            message: comment,
         }).then(() => {
             axios.get('/comments').then((results) => {
                 console.log(results, 'array')
@@ -61,11 +60,9 @@ function Comments(props) {
         // axios.post
     }
     const handleMessage = (e) => {
-        console.log(e.target.value, 'hit');
         setState({message: e.target.value});
     }
     
-    console.log(comments, 'comments');
 
     const { classes } = props;
 
@@ -74,16 +71,20 @@ function Comments(props) {
         <div>
             {" "}
             <Typography component="h1">
-            Let us know if you have seen some animals
+            Comments for {props.pet.name}
             </Typography>
             {comments
-            ? comments.map(comment => <Comment comment={comment} />)
+            ? comments.map(comment => {
+                if (comment.petId === props.pet.id) {
+                    return <Comment comment={comment} />
+                }
+            })
             : "no comments yet"}
         </div>
-        <form class={classes.form}>
+        <form className={classes.form}>
             <FormControl margin="normal" required fullWidth>
             <InputLabel htmlFor="comment" width="100px">
-                Comment
+                Add Comment Here
             </InputLabel>
             <Input
                 disableUnderline={true}
