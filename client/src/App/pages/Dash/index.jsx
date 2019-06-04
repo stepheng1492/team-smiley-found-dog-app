@@ -74,6 +74,7 @@ function Dash(props) {
                     {/* Hello {firebase.getCurrentUsername()} */}
                     Welcome Back!
                 </Typography>
+
                 <Typography component="h1" variant="h5">
                     {/* Your Dog {fruit ? `"${fruit}"` : <CircularProgress size={20} />} */}
                     Lost Pet? 

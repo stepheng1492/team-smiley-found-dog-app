@@ -61,6 +61,7 @@ router.route('/user')
           message: message,
           image: image,
           contact: contact,
+          userId: 1,
         }})
         res.send('comment added');
         
