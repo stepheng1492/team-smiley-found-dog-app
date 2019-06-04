@@ -64,6 +64,16 @@ function Comments(props) {
     }
     
 
+    const back = () => {
+        // hide comment component
+        props.commentRender();
+
+        // show html collection
+        Array.from(document.getElementsByClassName('petListItem')).forEach(element => {
+            element.style.display = 'block';
+        })
+    }
+
     const { classes } = props;
 
     return (
@@ -106,6 +116,7 @@ function Comments(props) {
         >
             Add Comment
         </Button>
+        <button onClick={back}>back</button>
     </div>
     );
 }

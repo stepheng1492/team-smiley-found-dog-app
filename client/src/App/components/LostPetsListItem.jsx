@@ -8,19 +8,30 @@ class LostPetsListItem extends React.Component {
             commentRender: false,
         };
         this.handleNameClick = this.handleNameClick.bind(this);
+        this.commentRenderFalse = this.commentRenderFalse.bind(this);
     }
 
     handleNameClick() {
         this.setState({
-            commentRender: !this.state.commentRender,
+            commentRender: true,
         });
+
+        Array.from(document.getElementsByClassName('petListItem')).forEach(element => {
+            element.style.display = 'none';
+        })
+    }
+
+    commentRenderFalse() {
+        this.setState({
+            commentRender: false,
+        })
     }
 
     render() {
         return (
             <div>
-            <li onClick={this.handleNameClick}>name: {this.props.pet.name}</li>
-            {this.state.commentRender ? <Comments pet={this.props.pet}/> : null}
+            <li onClick={this.handleNameClick} className='petListItem'>name: {this.props.pet.name}</li>
+            {this.state.commentRender ? <Comments commentRender={this.commentRenderFalse} pet={this.props.pet}/> : null}
             </div>);
     }
 }
