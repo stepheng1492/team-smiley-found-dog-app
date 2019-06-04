@@ -3,7 +3,7 @@ import { Typography, Paper, Avatar, CircularProgress, Button } from '@material-u
 import VerifiedUserOutlined from '@material-ui/icons/VerifiedUserOutlined'
 import withStyles from '@material-ui/core/styles/withStyles'
 import { withRouter, Link } from 'react-router-dom'
-import Pets from '../../components/pets.jsx'
+import Pets from '../../components/Pets.jsx'
 
 
 
