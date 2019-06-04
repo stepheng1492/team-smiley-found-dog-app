@@ -3,7 +3,7 @@ import Axios from 'axios';
 import { Button, FormControl, Input, InputLabel } from '@material-ui/core'
 import withStyles from "@material-ui/core/styles/withStyles";
 import PetsList from './PetsList.jsx';
-import Comments from './Comments.jsx';
+import LostListModal from './LostListModal.jsx';
 
 const styles = theme => ({
   main: {
@@ -186,16 +186,17 @@ class Pets extends React.Component {
               <PetsList pets={pets} />
               {/* <Comments /> */}
             </form>
-            <Button
+            <LostListModal />
+            {/* <Button
               type="submit"
               fullWidth
               variant="outlined"
               color="secondary"
-              onClick={this.getPets}
+              // onClick={this.getPets}
               className={classes.submit}
             >
               Lost List
-            </Button>
+            </Button> */}
           </div>
         );
     }
