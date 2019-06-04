@@ -1,18 +1,41 @@
 import React from 'react';
-import LostPetsListItem from './LostPetsListItem.jsx';
+import axios from 'axios';
+import LostPetsListItem from './LostPetsListItem.jsx'
 
 class LostPetsList extends React.Component {
     constructor() {
         super();
         this.state = {
-
+            pets: [],
         };
+        this.getPets = this.getPets.bind(this);
     }
 
+    /**
+     * getPets function makes request to server
+     */
+
+    
+    getPets() {
+        return axios.get('/user')
+    }
+
+    componentDidMount() {
+        this.getPets()
+        .then(data => {
+            this.setState({
+                pets: data.data,
+            })
+        })
+    }
+    
     render() {
-        return (
-            <LostPetsListItem />
-        );
+        return (<div>
+            <h1>Lost Pets</h1>
+            {this.state.pets.map(pet => {
+                return <LostPetsListItem pet={pet} />
+            })}
+        </div>);
     }
 }
 

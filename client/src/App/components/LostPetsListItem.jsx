@@ -1,6 +1,6 @@
 import React from 'react';
 
-class LostPetsList extends React.Component {
+class LostPetsListItem extends React.Component {
     constructor() {
         super();
         this.state = {
@@ -10,9 +10,9 @@ class LostPetsList extends React.Component {
 
     render() {
         return (
-
-            <LostPetsListItem />
-        );
+            <li>    
+            name: {this.props.pet.name}
+            </li>);
     }
 }
 

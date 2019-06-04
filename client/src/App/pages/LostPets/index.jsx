@@ -1,18 +1,18 @@
 import React from 'react'
 import withStyles from '@material-ui/core/styles/withStyles'
-import Comments from '../../components/Comments.jsx'
+import LostPetsList from '../../components/LostPetsList.jsx';
+
+
 
 const styles = theme => ({
   
 })
 
 function LostPets(props) {
-  const { classes } = props
-  console.log(classes.message);
   return (
     <div>
       <div>
-          <Comments></Comments>
+          <LostPetsList />
       </div>
     </div>
   )
