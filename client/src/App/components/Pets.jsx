@@ -2,8 +2,6 @@ import React from 'react';
 import Axios from 'axios';
 import { Button, FormControl, Input, InputLabel } from '@material-ui/core'
 import withStyles from "@material-ui/core/styles/withStyles";
-// require('dotenv').config;
-// import cloudinary from 'cloudinary';
 import PetsList from './PetsList.jsx';
 import Comments from './Comments.jsx';
 
