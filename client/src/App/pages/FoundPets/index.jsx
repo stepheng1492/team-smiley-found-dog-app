@@ -1,7 +1,18 @@
-import React from 'react';
-import { Link } from 'react-router-dom'
+import React from 'react'
+import FoundPetList from '../../components/FoundPetsList.jsx'
 
 
+function FoundPets(props) {
+    return (
+      <div>
+        <div>
+            <FoundPetList />
+        </div>
+      </div>
+    )
+}
+
+export default FoundPets;
 
 // import React from 'react';
 // import { Typography, Paper, Avatar, Button} from '@material-ui/core'

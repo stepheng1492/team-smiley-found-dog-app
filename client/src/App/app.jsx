@@ -1,11 +1,11 @@
 import React from 'react';
 // imports in the different component pages to to routed out to our index.html
-import Home from './pages/Home/index.jsx';
 import Dash from './pages/Dash/index.jsx';
 import SignUp from './pages/SignUp/index.jsx';
 import SignIn from './pages/SignIn/index.jsx';
 // import new lost dog map index
 import LostPets from './pages/LostPets/index.jsx' 
+import FoundPets from './pages/FoundPets/index.jsx';
 // imports components for using our material ui design components
 import { MuiThemeProvider , createMuiTheme } from '@material-ui/core/styles';
 import  { CssBaseline , CircularProgress } from '@material-ui/core';
@@ -27,12 +27,12 @@ function App(props){
                {/* use switch function to handle different routing paths */}
             <Switch>
                    {/* define paths, adn where to route those paths when entered */}
-               <Route exact path='/' component={Home} />
                <Route exact path='/signup' component={SignUp} />
                    {/* may change the login to / root so it default */}
                <Route exact path='/signin' component={SignIn} />
                <Route exact path='/dash' component={Dash} />
                    {/* add route for new map page */}
+               <Route exact path='/foundpets' component={FoundPets} />
                <Route exact path='/lostpets' component={LostPets} />
             </Switch>
       </Router>
