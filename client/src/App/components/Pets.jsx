@@ -63,6 +63,7 @@ class Pets extends React.Component {
         this.checkUploadResult = this.checkUploadResult.bind(this);
         this.getPets = this.getPets.bind(this);
         this.handleSearchBar = this.handleSearchBar.bind(this);
+        this.handleSearchSubmit = this.handleSearchSubmit.bind(this);
     }
 
     componentDidMount() {
@@ -83,6 +84,16 @@ class Pets extends React.Component {
       this.setState({
         searchParam: event.target.value,
       });
+      console.log(this.state)
+    }
+
+    handleSearchSubmit (event) {
+      event.preventDefault();
+      // console.log(event);
+      this.setState({
+        searched: true,
+      });
+      console.log(this.state);
     }
 
     // Submits information in forms and picture to database
@@ -224,6 +235,7 @@ class Pets extends React.Component {
             searched={searched}
             searchParam={searchParam}
             searchFunc={this.handleSearchBar}
+            handleSearchSubmit={this.handleSearchSubmit}
             />
           </div>
         );

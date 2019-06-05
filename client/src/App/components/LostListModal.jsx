@@ -7,6 +7,7 @@ import TitlebarGridList from './LostListGrid.jsx';
 import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
 import { fade } from '@material-ui/core/styles/colorManipulator';
+import SearchBar from './SearchBar.jsx';
 
 function getModalStyle() {
     return {
@@ -37,11 +38,11 @@ const useStyles = makeStyles(theme => ({
         marginLeft: 0,
         width: '100%',
         [theme.breakpoints.up('sm')]: {
-          marginLeft: theme.spacing(3),
-          width: 'auto',
+            marginLeft: theme.spacing(3),
+            width: 'auto',
         },
-      },
-      searchIcon: {
+    },
+    searchIcon: {
         width: theme.spacing(7),
         height: '100%',
         position: 'absolute',
@@ -49,18 +50,18 @@ const useStyles = makeStyles(theme => ({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-      },
-      inputRoot: {
+    },
+    inputRoot: {
         color: 'inherit',
-      },
-      inputInput: {
+    },
+    inputInput: {
         padding: theme.spacing(1, 1, 1, 7),
         transition: theme.transitions.create('width'),
         width: '100%',
         [theme.breakpoints.up('md')]: {
-          width: 200,
+            width: 200,
         },
-      },
+    },
 }));
 
 function LostPetModal(props) {
@@ -75,16 +76,16 @@ function LostPetModal(props) {
     const handleClose = () => {
         setOpen(false);
     };
-    
+
     const classes = useStyles();
-    // console.log(props);
+    console.log(props);
     return (
         <div>
             <Button
-            color='secondary'
-            variant="contained"
-            fullWidth
-            onClick={handleOpen}>Lost Pets List</Button>
+                color='secondary'
+                variant="contained"
+                fullWidth
+                onClick={handleOpen}>Lost Pets List</Button>
             <Modal
                 color="secondary"
                 variant="outlined"
@@ -97,7 +98,8 @@ function LostPetModal(props) {
                     <Typography variant="h6" id="modal-title" align="center">
                         Have You Seen Me?
                     </Typography>
-                    <div className={classes.search}>
+                    <SearchBar />
+                    {/* <div className={classes.search}>
                         <div className={classes.searchIcon}>
                             <SearchIcon />
                         </div>
@@ -109,13 +111,12 @@ function LostPetModal(props) {
                             }}
                             inputProps={{ 'aria-label': 'Search' }}
                             onChange={props.searchFunc}
-                            onSubmit={console.log('test')}
                         />
-                    </div>
+                    </div> */}
                     <Typography variant="subtitle1" id="simple-modal-description">
 
                     </Typography>
-                    <TitlebarGridList allPets={props.allPets}/>
+                    <TitlebarGridList allPets={props.allPets} />
                 </div>
             </Modal>
         </div>
