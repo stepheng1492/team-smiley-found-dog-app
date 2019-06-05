@@ -66,6 +66,17 @@ function Dash(props) {
                     color="secondary"
                     // add link to dash
                     component={Link}
+                    to="/foundpets"
+                    className={classes.submit}>
+                    Found Pets
+                </Button>
+                <Button
+                    type="submit"
+                    fullWidth
+                    variant="contained"
+                    color="secondary"
+                    // add link to dash
+                    component={Link}
                     to="/lostpets"
                     className={classes.submit}>
                     LOST PETS!
@@ -74,6 +85,7 @@ function Dash(props) {
                     {/* Hello {firebase.getCurrentUsername()} */}
                     Welcome Back!
                 </Typography>
+
                 <Typography component="h1" variant="h5">
                     {/* Your Dog {fruit ? `"${fruit}"` : <CircularProgress size={20} />} */}
                     Lost Pet? 
