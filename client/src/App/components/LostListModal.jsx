@@ -75,8 +75,9 @@ function LostPetModal(props) {
     const handleClose = () => {
         setOpen(false);
     };
+    
     const classes = useStyles();
-    // console.log(props.allPets);
+    // console.log(props);
     return (
         <div>
             <Button
@@ -107,6 +108,8 @@ function LostPetModal(props) {
                                 input: classes.inputInput,
                             }}
                             inputProps={{ 'aria-label': 'Search' }}
+                            onChange={props.searchFunc}
+                            onSubmit={console.log('test')}
                         />
                     </div>
                     <Typography variant="subtitle1" id="simple-modal-description">

@@ -47,9 +47,10 @@ class Pets extends React.Component {
             image: '',
             contact: '',
             pets: [],
+            searched: false,
+            searchParam: '',
             widget: window.cloudinary.createUploadWidget({
         cloud_name: `duubp6wjp`,
-        // imageUrl: 'https://api.cloudinary.com/v1_1/dyucbqgew/image/upload'
         uploadPreset: `wwcugh6n` },
         (err, result) => {this.checkUploadResult(result)}
       )
@@ -60,6 +61,7 @@ class Pets extends React.Component {
         this.showWidget = this.showWidget.bind(this);
         this.checkUploadResult = this.checkUploadResult.bind(this);
         this.getPets = this.getPets.bind(this);
+        this.handleSearchBar = this.handleSearchBar.bind(this);
     }
 
     componentDidMount() {
@@ -72,6 +74,14 @@ class Pets extends React.Component {
         const state = {};
         state[name] = value;
         this.setState(state);
+    }
+
+    // create a function to pass down as a prop that will change the state of searched 
+    // to true if searched and the search params 
+    handleSearchBar(event) {
+      this.setState({
+        searchParam: event.target.value,
+      });
     }
 
     // Submits information in forms and picture to database
@@ -118,10 +128,14 @@ class Pets extends React.Component {
         .catch(err => console.error(err));
     }
 
+    // handleSearch() {
+
+    // }
+
     render() {
       const { classes } = this.props;
   
-      const { pets } = this.state;
+      const { pets, searched, searchParam } = this.state;
       // console.log(this.state.pets);
         return (
           <div>
@@ -191,17 +205,12 @@ class Pets extends React.Component {
               <PetsList pets={pets} />
               {/* <Comments /> */}
             </form>
-            <LostListModal allPets={pets}/>
-            {/* <Button
-              type="submit"
-              fullWidth
-              variant="outlined"
-              color="secondary"
-              // onClick={this.getPets}
-              className={classes.submit}
-            >
-              Lost List
-            </Button> */}
+            <LostListModal
+            allPets={pets}
+            searched={searched}
+            searchParam={searchParam}
+            searchFunc={this.handleSearchBar}
+            />
           </div>
         );
     }
