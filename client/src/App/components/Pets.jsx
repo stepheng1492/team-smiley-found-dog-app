@@ -3,7 +3,7 @@ import Axios from 'axios';
 import { Button, FormControl, Input, InputLabel } from '@material-ui/core'
 import withStyles from "@material-ui/core/styles/withStyles";
 import PetsList from './PetsList.jsx';
-import LostListModal from './LostListModal.jsx';
+import LostListModal from './LostListModal.jsx'
 
 const styles = theme => ({
   main: {
@@ -41,6 +41,7 @@ class Pets extends React.Component {
         super(props)
 
         this.state = {
+            ownerName: '',
             name: '',
             type: '',
             message: '',
@@ -86,15 +87,17 @@ class Pets extends React.Component {
 
     // Submits information in forms and picture to database
     handleSubmit(event) {
-      const { name, type, message, image, contact } = this.state;
+      const { ownerName, name, type, message, image, contact, userID } = this.state;
       event.preventDefault();
         // post request to db with info
         Axios.post('/user', {
+          ownerName: ownerName,
           name: name,
           type: type,
           message: message,
           contact: contact,
           image: image,
+          userID: userID,
         }).then(response => console.log(response))
         .catch(err => console.error(err));
       }
@@ -150,6 +153,17 @@ class Pets extends React.Component {
               Upload Pet Pic
             </Button>
             <form className={classes.form}>
+              <FormControl margin="normal" required fullWidth>
+                <InputLabel htmlFor="name">Owner Name</InputLabel>
+                <Input
+                  id="name"
+                  type="text"
+                  name="ownerName"
+                  autoComplete="off"
+                  autoFocus
+                  onChange={this.handleChange}
+                />
+              </FormControl>
               <FormControl margin="normal" required fullWidth>
                 <InputLabel htmlFor="name">Pet Name</InputLabel>
                 <Input

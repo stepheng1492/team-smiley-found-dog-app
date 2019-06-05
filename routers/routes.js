@@ -54,14 +54,14 @@ router.route('/user')
     }).post((req, res, next) => {
         // adds pet information from forms, and image to database
         console.log(req.body);
-        const { name, type, message, image, contact } = req.body;
+        const { ownerName, name, type, message, image, contact } = req.body;
         Pets.findOrCreate({where: {
+          ownerName,
           name: name,
           type: type,
           message: message,
           image: image,
           contact: contact,
-          userId: 1,
         }})
         res.send('comment added');
         
@@ -76,8 +76,9 @@ router.route('/comments')
     })
     // adds comments to the database
     .post((req, res, next) => {
-        const {message} = req.body;
+        const {message, petId} = req.body;
         Comments.findOrCreate({where: {
+            petId: petId,
             message: message,
         }})
         res.send('comment added');
