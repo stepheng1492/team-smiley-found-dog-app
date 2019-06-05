@@ -52,15 +52,15 @@ function Comments(props) {
             message: comment,
         }).then(() => {
             axios.get('/comments').then((results) => {
-                console.log(results, 'array')
                 setState({comments: results.data});
             })
         })
-        // console.log(setState, 'whats th`is?')
-        // axios.post
+        
+        setState({message: ''});
+        
     }
     const handleMessage = (e) => {
-        setState({message: e.target.value});
+        setState({message: e.target.value, comments: comments});
     }
     
 
@@ -89,7 +89,7 @@ function Comments(props) {
                     return <Comment comment={comment} />
                 }
             })
-            : "no comments yet"}
+            : ""}
         </div>
         <form className={classes.form}>
             <FormControl margin="normal" required fullWidth>
@@ -104,6 +104,7 @@ function Comments(props) {
                 id="comment"
                 autoComplete="off"
                 onChange={handleMessage}
+                value={message}
             />
             </FormControl>
         </form>

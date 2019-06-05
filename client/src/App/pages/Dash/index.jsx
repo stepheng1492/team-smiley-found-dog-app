@@ -7,6 +7,7 @@ import Pets from '../../components/Pets.jsx'
 
 
 
+
 const styles = theme => ({
     main: {
         width: 'auto',
@@ -38,20 +39,8 @@ const styles = theme => ({
 function Dash(props) {
     const { classes } = props
 
-    // if (!firebase.getCurrentUsername()) {
-    //     // not logged in
-    //     alert('Please login first')
-    //     props.history.replace('/login')
-    //     return null
-    // }
-    //
-
     const [fruit, setFruit] = useState('')
 
-    // useEffect(() => {
-    //     //getting firestore data
-    //     firebase.getCurrentUserFruit().then(setFruit)
-    // })
 
     return (
         <main className={classes.main}>
@@ -64,39 +53,25 @@ function Dash(props) {
                     fullWidth
                     variant="contained"
                     color="secondary"
-                    // add link to dash
                     component={Link}
                     to="/lostpets"
                     className={classes.submit}>
-                    LOST PETS!
+                    LOST PETS COMMENTS
                 </Button>
                 <Typography component="h1" variant="h5">
-                    {/* Hello {firebase.getCurrentUsername()} */}
                     Welcome Back!
                 </Typography>
                 <Typography component="h1" variant="h5">
-                    {/* Your Dog {fruit ? `"${fruit}"` : <CircularProgress size={20} />} */}
                     Lost Pet? 
                 </Typography>
                 <Pets />
-                {/* <Button type="submit" fullWidth variant="contained" color="secondary" onClick={logout} className={classes.submit}>
-                    Logout
-        </Button> */}
-                {/* <Geolocation />*/}
+    
             </Paper>
             
         </main>
 
     )
 
-
-    // async function logout() {
-    //     await firebase.logout()
-    //     //use for routing
-    //     props.history.push('/')
-    //     //
-    //     //
-    // }
 }
 
 export default withRouter(withStyles(styles)(Dash))

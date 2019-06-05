@@ -2,11 +2,10 @@ const Sequelize = require('sequelize');
 const sequelize = new Sequelize(`${process.env.MY_DB}`, `${process.env.MY_UN}`, `${process.env.MY_PW}`, {
   host: `${process.env.MY_HOST}`,
   dialect: 'postgres',
-  port: process.env.PORT // add port
+  port: process.env.PORT
 });
 
 
-//to check and see if sequilize is running
 sequelize
 .authenticate()
 .then(() => {
@@ -17,21 +16,20 @@ sequelize
 });
 
 const User = sequelize.define('user', {
-  // attributesss
   name: {
     type: Sequelize.STRING,
     unique: true,
-    // allowNull defaults to true
   },
   email: {
     type: Sequelize.STRING
   },
- }, {
-  // options
  });
 
 
  const Pets = sequelize.define('pets', {
+   ownerName: {
+     type: Sequelize.STRING
+   },
    name: {
      type: Sequelize.STRING
    },
@@ -47,10 +45,6 @@ const User = sequelize.define('user', {
    contact: {
      type: Sequelize.STRING(250)
    },
-   userId: {
-    type: Sequelize.INTEGER,
-    references: { model: 'users', key: 'id'},
-   }
  });
 
  const Comments = sequelize.define('comments', {
@@ -63,28 +57,16 @@ const User = sequelize.define('user', {
    }
  });
 
- 
 
-//  Pets.hasOne(User, { foreignKey: 'petsId' });
-//  Pets.belongsTo(User, {foreignKey: 'userId'});
  
 //  User.sync({ force: true }).then(() => {
-
-//  Pets.sync({ force: true }).then(() => {
-
-//   Comments.sync({ force:true }).then(() => {
-    
-//   });
-// })
-   
-//   });
-  
-
-
-  
+//    Pets.sync({ force: true }).then(() => {
+//      Comments.sync({ force:true }).then(() => {
+//      });
+//    });
+//  });
   
 
   module.exports.User = User;
   module.exports.Pets = Pets;
   module.exports.Comments = Comments;
-// await client.connect()

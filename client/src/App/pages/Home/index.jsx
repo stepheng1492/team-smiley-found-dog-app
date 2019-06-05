@@ -4,6 +4,7 @@ import VerifiedUserOutlined from '@material-ui/icons/VerifiedUserOutlined'
 import withStyles from '@material-ui/core/styles/withStyles'
 import { Link } from 'react-router-dom'
 
+
 // add basic styling wanted
 const styles = theme => ({
     main: {
