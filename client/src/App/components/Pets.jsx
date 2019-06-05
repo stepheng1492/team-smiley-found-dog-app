@@ -157,6 +157,7 @@ class Pets extends React.Component {
                   autoComplete="off"
                   autoFocus
                   onChange={this.handleChange}
+                  value={this.state.ownerName}
                 />
               </FormControl>
               <FormControl margin="normal" required fullWidth>
@@ -166,8 +167,8 @@ class Pets extends React.Component {
                   type="text"
                   name="name"
                   autoComplete="off"
-                  autoFocus
                   onChange={this.handleChange}
+                  value={this.state.name}
                 />
               </FormControl>
               <FormControl margin="normal" required fullWidth>
@@ -178,6 +179,7 @@ class Pets extends React.Component {
                   name="type"
                   autoComplete="off"
                   onChange={this.handleChange}
+                  value={this.state.type}
                 />
               </FormControl>
               <FormControl margin="normal" required fullWidth>
@@ -188,6 +190,7 @@ class Pets extends React.Component {
                   id="password"
                   autoComplete="off"
                   onChange={this.handleChange}
+                  value={this.state.message}
                 />
               </FormControl>
               <FormControl margin="normal" required fullWidth>
@@ -198,6 +201,7 @@ class Pets extends React.Component {
                   id="contact"
                   autoComplete="off"
                   onChange={this.handleChange}
+                  value={this.state.contact}
                 />
               </FormControl>
 
