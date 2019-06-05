@@ -92,7 +92,7 @@ export default function TitlebarGridList(props) {
               subtitle={<span>the {lostPet.type}</span>}
               actionIcon={
                 <IconButton aria-label={`info about ${lostPet.title}`} className={classes.icon}>
-                  <InfoIcon />
+                  <InfoIcon />  
                 </IconButton>
               }
             />
