@@ -45,9 +45,9 @@ const PetsFeed = ({ pet, classes }) => (
     <Typography component="h1">{pet.message}</Typography>
     <Typography component="h1">{pet.created_At}</Typography>
     <Typography component="h1">{pet.contact}</Typography> */}
-    <a href={pet.image} target="blank">
+    {/* <a href={pet.image} target="blank">
       Lost Pet Pic
-    </a>
+    </a> */}
   </div>
 );
 
