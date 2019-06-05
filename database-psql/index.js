@@ -62,12 +62,12 @@ const User = sequelize.define('user', {
    }
  });
  
-//  User.sync({ force: true }).then(() => {
-//    Pets.sync({ force: true }).then(() => {
-//      Comments.sync({ force:true }).then(() => {
-//      });
-//    });
-//  });
+ User.sync({ force: true }).then(() => {
+   Pets.sync({ force: true }).then(() => {
+     Comments.sync({ force:true }).then(() => {
+     });
+   });
+ });
   
 
   module.exports.User = User;
