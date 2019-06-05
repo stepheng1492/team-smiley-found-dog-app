@@ -3,7 +3,7 @@ import Axios from 'axios';
 import { Button, FormControl, Input, InputLabel } from '@material-ui/core'
 import withStyles from "@material-ui/core/styles/withStyles";
 import PetsList from './PetsList.jsx';
-import Comments from './Comments.jsx';
+import LostListModal from './LostListModal.jsx';
 
 const styles = theme => ({
   main: {
@@ -64,6 +64,10 @@ class Pets extends React.Component {
         this.getPets = this.getPets.bind(this);
     }
 
+    componentDidMount() {
+      this.getPets();
+    }
+
     // grabs information from forms by name and value entered, sets state
     handleChange() {
         const { name, value } = event.target;
@@ -108,7 +112,7 @@ class Pets extends React.Component {
     getPets() {
       Axios.get('/user')
         .then(pets => {
-          console.log(pets);
+          // console.log(pets);
           let allPets = [];
           pets.data.forEach(pet => allPets.push(pet));
           this.setState({
@@ -120,8 +124,9 @@ class Pets extends React.Component {
 
     render() {
       const { classes } = this.props;
-
+  
       const { pets } = this.state;
+      // console.log(this.state.pets);
         return (
           <div>
             <Button
@@ -201,16 +206,17 @@ class Pets extends React.Component {
               <PetsList pets={pets} />
               {/* <Comments /> */}
             </form>
-            <Button
+            <LostListModal allPets={pets}/>
+            {/* <Button
               type="submit"
               fullWidth
               variant="outlined"
               color="secondary"
-              onClick={this.getPets}
+              // onClick={this.getPets}
               className={classes.submit}
             >
               Lost List
-            </Button>
+            </Button> */}
           </div>
         );
     }

@@ -45,6 +45,11 @@ const User = sequelize.define('user', {
    contact: {
      type: Sequelize.STRING(250)
    },
+   found: {
+     type: Sequelize.BOOLEAN,
+     allowNull: true,
+     defaultValue: false,
+   },
  });
 
  const Comments = sequelize.define('comments', {
@@ -56,8 +61,6 @@ const User = sequelize.define('user', {
      references: { model: 'pets', key: 'id' },
    }
  });
-
-
  
 //  User.sync({ force: true }).then(() => {
 //    Pets.sync({ force: true }).then(() => {

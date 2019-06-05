@@ -54,6 +54,17 @@ function Dash(props) {
                     variant="contained"
                     color="secondary"
                     component={Link}
+                    to="/foundpets"
+                    className={classes.submit}>
+                    Found Pets
+                </Button>
+                <Button
+                    type="submit"
+                    fullWidth
+                    variant="contained"
+                    color="secondary"
+                    // add link to dash
+                    component={Link}
                     to="/lostpets"
                     className={classes.submit}>
                     LOST PETS COMMENTS
@@ -61,6 +72,7 @@ function Dash(props) {
                 <Typography component="h1" variant="h5">
                     Welcome Back!
                 </Typography>
+
                 <Typography component="h1" variant="h5">
                     Lost Pet? 
                 </Typography>
