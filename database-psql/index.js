@@ -47,10 +47,15 @@ const User = sequelize.define('user', {
    contact: {
      type: Sequelize.STRING(250)
    },
+   found: {
+     type: Sequelize.BOOLEAN,
+     allowNull: true,
+     defaultValue: false,
+   },
    userId: {
     type: Sequelize.INTEGER,
     references: { model: 'users', key: 'id'},
-   }
+   },
  });
 
  const Comments = sequelize.define('comments', {
@@ -62,11 +67,6 @@ const User = sequelize.define('user', {
      references: { model: 'pets', key: 'id' },
    }
  });
-
- 
-
-//  Pets.hasOne(User, { foreignKey: 'petsId' });
-//  Pets.belongsTo(User, {foreignKey: 'userId'});
  
 //  User.sync({ force: true }).then(() => {
 
