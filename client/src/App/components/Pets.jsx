@@ -271,6 +271,7 @@ class Pets extends React.Component {
               <PetsList pets={pets} />
             </form>
             <LostListModal
+            getPets={this.getPets}
             clearSearch={this.clearSearch}
             state={this.state}
             allPets={pets}

@@ -71,6 +71,7 @@ function LostPetModal(props) {
 
     const handleOpen = () => {
         setOpen(true);
+        props.getPets();
     };
 
     const handleClose = () => {
