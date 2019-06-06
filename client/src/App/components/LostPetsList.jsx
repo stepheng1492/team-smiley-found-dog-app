@@ -24,6 +24,13 @@ class LostPetsList extends React.Component {
         this.getPets = this.getPets.bind(this);
     }
 
+    /**
+     * getPets function makes request to server
+     */
+    // getFoundPets() {
+
+    // }
+
     
     getPets() {
         return axios.get('/user')

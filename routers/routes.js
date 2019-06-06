@@ -59,9 +59,19 @@ router.route('/user')
           image: image,
           contact: contact,
         }})
-        res.send('comment added');
         
+    }).put((req, res) => {
+        const { petId } = req.body;
+        const values = { found: true }
+        const selector = {
+            where: {
+                id: petId,
+            }
+        }
+        Pets.update(values, selector)
+            .then((result) => console.log(result))
     })
+
 
 router.route('/comments')
     // gets all comments from database

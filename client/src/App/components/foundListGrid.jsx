@@ -34,9 +34,10 @@ const useStyles = makeStyles(theme => ({
 
 export default function TitlebarGridList(props) {
 
-  const allLostPets = props.allPets.filter((pet) => {
-    return pet.found === false;
+  const nonLostPets = props.allPets.filter((pet) => {
+    return pet.found === true;
   })
+  console.log(nonLostPets)
 
   const foundPets = (petId) => {
     return axios.put('/user', {
@@ -54,7 +55,7 @@ export default function TitlebarGridList(props) {
         <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>
           <ListSubheader component="div">Currently Missing Pets</ListSubheader>
         </GridListTile>
-        {allLostPets.map(lostPet => (
+        {nonLostPets.map(lostPet => (
           <GridListTile key={lostPet.image}>
             <img src={lostPet.image} alt={lostPet.name} />
             <GridListTileBar
@@ -74,7 +75,7 @@ export default function TitlebarGridList(props) {
   );
 }
 else {
-    let filteredPets = allLostPets.filter( (pet) => {
+    let filteredPets = nonLostPets.filter( (pet) => {
         if (pet.name) {
             return pet.name.toLowerCase() === props.state.searchParam.toLowerCase() ||
             pet.type.toLowerCase() === props.state.searchParam.toLowerCase();
