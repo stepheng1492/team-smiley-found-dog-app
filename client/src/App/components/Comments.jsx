@@ -33,6 +33,16 @@ submit: {
 }
 });
 
+const divStyle = {
+    display: 'flex',
+    flexFlow: 'column wrap',
+    alignItems: 'center',
+}
+
+const commentTitleStyle = {
+    fontWeight: 'bold',
+}
+
 //make handle change to bind comment input 
 function Comments(props) {
 
@@ -77,12 +87,12 @@ function Comments(props) {
     const { classes } = props;
 
     return (
-    <div>
+    <div style={divStyle}>
         <div>
             {" "}
-            <Typography component="h1">
-            Comments for {props.pet.name}
-            </Typography>
+            <h3 style={commentTitleStyle}>
+            Comments For {props.pet.name}
+            </h3>
             {comments
             ? comments.map(comment => {
                 if (comment.petId === props.pet.id) {
@@ -117,7 +127,16 @@ function Comments(props) {
         >
             Add Comment
         </Button>
-        <button onClick={back}>back</button>
+        <Button
+            type="submit"
+            width="100px"
+            variant="contained"
+            color="secondary"
+            onClick={back}
+        >
+            Back
+        </Button>
+
     </div>
     );
 }

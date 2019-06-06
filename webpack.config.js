@@ -8,11 +8,13 @@ module.exports = {
     mode: 'production',
     entry: `${SRC}/index.jsx`,
     module: {
-        rules: [{
+        rules: [
+            {
             test: /\.jsx$/,
             exclude: /node_modules/,
             loader: 'babel-loader'
-        }]
+        },
+    ]
     },
     output: {
         filename: 'bundle.js',
