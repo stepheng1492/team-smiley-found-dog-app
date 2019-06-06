@@ -48,16 +48,14 @@ function Dash(props) {
                 <Avatar className={classes.avatar}>
                     <VerifiedUserOutlined />
                 </Avatar>
-                <Button
-                    type="submit"
-                    fullWidth
-                    variant="contained"
-                    color="secondary"
-                    component={Link}
-                    to="/foundpets"
-                    className={classes.submit}>
-                    Found Pets
-                </Button>
+                <Typography component="h1" variant="h5">
+                    Welcome Back!
+                </Typography>
+
+                <Typography component="h1" variant="h5">
+                    Lost Pet? 
+                </Typography>
+                <Pets />
                 <Button
                     type="submit"
                     fullWidth
@@ -69,15 +67,6 @@ function Dash(props) {
                     className={classes.submit}>
                     LOST PETS COMMENTS
                 </Button>
-                <Typography component="h1" variant="h5">
-                    Welcome Back!
-                </Typography>
-
-                <Typography component="h1" variant="h5">
-                    Lost Pet? 
-                </Typography>
-                <Pets />
-    
             </Paper>
             
         </main>
