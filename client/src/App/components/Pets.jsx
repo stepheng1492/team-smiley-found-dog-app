@@ -66,12 +66,14 @@ class Pets extends React.Component {
         this.handleSearchSubmit = this.handleSearchSubmit.bind(this);
     }
 
+
+
     componentDidMount() {
       this.getPets();
     }
 
     // grabs information from forms by name and value entered, sets state
-    handleChange() {
+    handleChange(e) {
         const { name, value } = event.target;
         const state = {};
         state[name] = value;
@@ -97,7 +99,7 @@ class Pets extends React.Component {
 
     // Submits information in forms and picture to database
     handleSubmit(event) {
-      const { ownerName, name, type, message, image, contact, userID } = this.state;
+      const { ownerName, name, type, message, image, contact } = this.state;
       event.preventDefault();
         // post request to db with info
         Axios.post('/user', {
@@ -107,9 +109,16 @@ class Pets extends React.Component {
           message: message,
           contact: contact,
           image: image,
-          userID: userID,
         }).then(response => console.log(response))
-        .catch(err => console.error(err));
+
+        this.setState({
+          ownerName: '',
+          name: '',
+          type: '',
+          message: '',
+          image: '',
+          contact: '',
+        })
       }
     
       // allows widget to be displayed
@@ -162,7 +171,7 @@ class Pets extends React.Component {
             >
               Upload Pet Pic
             </Button>
-            <form className={classes.form}>
+            <form className={classes.form} onSubmit={this.handleSubmit}>
               <FormControl margin="normal" required fullWidth>
                 <InputLabel htmlFor="name">Owner Name</InputLabel>
                 <Input
@@ -172,6 +181,7 @@ class Pets extends React.Component {
                   autoComplete="off"
                   autoFocus
                   onChange={this.handleChange}
+                  value={this.state.ownerName}
                 />
               </FormControl>
               <FormControl margin="normal" required fullWidth>
@@ -181,8 +191,8 @@ class Pets extends React.Component {
                   type="text"
                   name="name"
                   autoComplete="off"
-                  autoFocus
                   onChange={this.handleChange}
+                  value={this.state.name}
                 />
               </FormControl>
               <FormControl margin="normal" required fullWidth>
@@ -193,6 +203,7 @@ class Pets extends React.Component {
                   name="type"
                   autoComplete="off"
                   onChange={this.handleChange}
+                  value={this.state.type}
                 />
               </FormControl>
               <FormControl margin="normal" required fullWidth>
@@ -203,6 +214,7 @@ class Pets extends React.Component {
                   id="password"
                   autoComplete="off"
                   onChange={this.handleChange}
+                  value={this.state.message}
                 />
               </FormControl>
               <FormControl margin="normal" required fullWidth>
@@ -213,6 +225,7 @@ class Pets extends React.Component {
                   id="contact"
                   autoComplete="off"
                   onChange={this.handleChange}
+                  value={this.state.contact}
                 />
               </FormControl>
 
