@@ -69,7 +69,7 @@ router.route('/user')
         const values = { found: true }
         const selector = {
             where: {
-                petId: petId,
+                id: petId,
             }
         }
         Pets.update(values, selector)

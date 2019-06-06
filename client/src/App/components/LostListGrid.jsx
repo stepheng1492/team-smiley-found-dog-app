@@ -6,7 +6,7 @@ import GridListTileBar from '@material-ui/core/GridListTileBar';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import IconButton from '@material-ui/core/IconButton';
 import CheckBox from '@material-ui/core/Checkbox';
-import Axios from 'axios';
+import axios from 'axios';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -27,7 +27,17 @@ const useStyles = makeStyles(theme => ({
 
 
 
+
+
 export default function TitlebarGridList(props) {
+
+  const foundPets = (petId) => {
+    return axios.put('/user', {
+        petId,
+    })
+    .then((results) => console.log(results))
+  }
+
   const classes = useStyles();
   console.log(props);
  if (!props.state.searched) {
@@ -45,7 +55,7 @@ export default function TitlebarGridList(props) {
               subtitle={<span>{lostPet.type}</span>}
               actionIcon={
                 <IconButton aria-label={`info about ${lostPet.title}`} className={classes.icon}>
-                  <CheckBox />  
+                  <CheckBox onClick={() => {foundPets(lostPet.id)}}/>  
                 </IconButton>
               }
             />
