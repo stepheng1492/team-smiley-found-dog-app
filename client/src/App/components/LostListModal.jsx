@@ -78,7 +78,7 @@ function LostPetModal(props) {
     };
 
     const classes = useStyles();
-    console.log(props);
+    // console.log(props.state);
     return (
         <div>
             <Button
@@ -98,25 +98,18 @@ function LostPetModal(props) {
                     <Typography variant="h6" id="modal-title" align="center">
                         Have You Seen Me?
                     </Typography>
-                    <SearchBar />
-                    {/* <div className={classes.search}>
-                        <div className={classes.searchIcon}>
-                            <SearchIcon />
-                        </div>
-                        <InputBase
-                            placeholder="Search…"
-                            classes={{
-                                root: classes.inputRoot,
-                                input: classes.inputInput,
-                            }}
-                            inputProps={{ 'aria-label': 'Search' }}
-                            onChange={props.searchFunc}
-                        />
-                    </div> */}
+                    <SearchBar 
+                    state={props.state}
+                    searchFunc={props.searchFunc}
+                    handleSearchSubmit={props.handleSearchSubmit}
+                    />
                     <Typography variant="subtitle1" id="simple-modal-description">
 
                     </Typography>
-                    <TitlebarGridList allPets={props.allPets} />
+                    <TitlebarGridList 
+                        allPets={props.allPets} 
+                        state={props.state}
+                    />
                 </div>
             </Modal>
         </div>

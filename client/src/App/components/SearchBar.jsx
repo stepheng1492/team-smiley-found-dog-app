@@ -38,9 +38,11 @@
 //   }
 
 //   export default SearchForm;
+
 import React from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
 import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
 
@@ -62,7 +64,9 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function SearchForm() {
+
+function SearchForm(props) {
+    // console.log(props);
   const classes = useStyles();
   const [values, setValues] = React.useState({
     name: 'Cat in the Hat',
@@ -70,21 +74,33 @@ function SearchForm() {
     multiline: 'Controlled',
     currency: 'EUR',
   });
+//   console.log(props)
 
-  const handleChange = name => event => {
-      console.log(event);
-  };
 
   return (
-    <form className={classes.container} noValidate autoComplete="off">
+      <div>
+    <form 
+    className={classes.container} 
+    noValidate 
+    autoComplete="off"
+    onSubmit={props.handleSearchSubmit}
+    >
       <TextField
         id="standard-search"
-        label="Search field"
+        label="Search lost pets"
         type="search"
         className={classes.textField}
         margin="normal"
-      />
+        onChange={props.searchFunc}
+        />
     </form>
+    <Button 
+    variant="outlined" 
+    className={classes.button}
+    >
+    Submit
+  </Button>
+        </div>
   );
 }
 

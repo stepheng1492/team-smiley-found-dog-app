@@ -84,16 +84,15 @@ class Pets extends React.Component {
       this.setState({
         searchParam: event.target.value,
       });
-      console.log(this.state)
+      // console.log(this.state)
     }
 
     handleSearchSubmit (event) {
       event.preventDefault();
-      // console.log(event);
       this.setState({
         searched: true,
       });
-      console.log(this.state);
+      // console.log(this.state);
     }
 
     // Submits information in forms and picture to database
@@ -228,9 +227,9 @@ class Pets extends React.Component {
                 Submit Pet!
               </Button>
               <PetsList pets={pets} />
-              {/* <Comments /> */}
             </form>
             <LostListModal
+            state={this.state}
             allPets={pets}
             searched={searched}
             searchParam={searchParam}
