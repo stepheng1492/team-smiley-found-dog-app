@@ -4,6 +4,7 @@ import { Button, FormControl, Input, InputLabel } from '@material-ui/core'
 import withStyles from "@material-ui/core/styles/withStyles";
 import PetsList from './PetsList.jsx';
 import LostListModal from './LostListModal.jsx'
+import FoundListModal from './FoundListModal.jsx'
 
 const styles = theme => ({
   main: {
@@ -50,7 +51,6 @@ class Pets extends React.Component {
             pets: [],
             searched: false,
             searchParam: '',
-            foundPets: [],
             widget: window.cloudinary.createUploadWidget({
         cloud_name: `duubp6wjp`,
         uploadPreset: `wwcugh6n` },
@@ -65,31 +65,31 @@ class Pets extends React.Component {
         this.getPets = this.getPets.bind(this);
         this.handleSearchBar = this.handleSearchBar.bind(this);
         this.handleSearchSubmit = this.handleSearchSubmit.bind(this);
-        this.getFoundPets = this.getFoundPets.bind(this);
-        this.foundPets = this.foundPets.bind(this);
+        // this.getFoundPets = this.getFoundPets.bind(this);
+        // this.foundPets = this.foundPets.bind(this);
         this.clearSearch = this.clearSearch.bind(this);
     }
+    // this.state.pets.filter
+    // foundPets() {
+    //   return axios.put('user', {
+    //       found: true
+    //   })
+    //   .then((results) => console.log(results))
+    // }
 
-    foundPets() {
-      return axios.put('user', {
-          found: true
-      })
-      .then((results) => console.log(results))
-    }
-
-    getFoundPets() {
-      return axios.get('user', {
-        params: {
-          found: this.props.pets.found
-        }
-      }).then((results) => {
-        let foundPets = [];
-          results.data.forEach(pet => foundPets.push(pet));
-          this.setState({
-            foundPets: foundPets,
-          })
-      })
-    }
+    // getFoundPets() {
+    //   return axios.get('user', {
+    //     params: {
+    //       found: this.props.pets.found
+    //     }
+    //   }).then((results) => {
+    //     let foundPets = [];
+    //       results.data.forEach(pet => foundPets.push(pet));
+    //       this.setState({
+    //         foundPets: foundPets,
+    //       })
+    //   })
+    // }
 
     componentDidMount() {
       this.getPets();
@@ -271,6 +271,15 @@ class Pets extends React.Component {
               <PetsList pets={pets} />
             </form>
             <LostListModal
+            clearSearch={this.clearSearch}
+            state={this.state}
+            allPets={pets}
+            searched={searched}
+            searchParam={searchParam}
+            searchFunc={this.handleSearchBar}
+            handleSearchSubmit={this.handleSearchSubmit}
+            />
+            <FoundListModal 
             clearSearch={this.clearSearch}
             state={this.state}
             allPets={pets}
