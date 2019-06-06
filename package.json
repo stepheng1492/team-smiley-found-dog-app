@@ -34,6 +34,7 @@
     "material-ui-search-bar": "^0.4.2",
     "materialize-css": "^1.0.0-rc.2",
     "mocha": "^6.1.4",
+    "moment": "^2.24.0",
     "passport": "^0.4.0",
     "path": "^0.12.7",
     "pg": "^7.11.0",
