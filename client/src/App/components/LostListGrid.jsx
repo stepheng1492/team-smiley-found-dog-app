@@ -28,7 +28,6 @@ const useStyles = makeStyles(theme => ({
 
 export default function TitlebarGridList(props) {
   const classes = useStyles();
-  console.log(props);
  if (!props.state.searched) {
   return (      
     <div className={classes.root}>
@@ -61,7 +60,6 @@ else {
             pet.type.toLowerCase() === props.state.searchParam.toLowerCase();
         }
     });
-    console.log(filteredPets);
     return (      
         <div className={classes.root}>
           <GridList cellHeight={180} className={classes.gridList}>

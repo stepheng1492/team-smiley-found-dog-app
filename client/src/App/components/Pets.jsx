@@ -64,6 +64,7 @@ class Pets extends React.Component {
         this.getPets = this.getPets.bind(this);
         this.handleSearchBar = this.handleSearchBar.bind(this);
         this.handleSearchSubmit = this.handleSearchSubmit.bind(this);
+        this.clearSearch = this.clearSearch.bind(this);
     }
 
 
@@ -86,7 +87,6 @@ class Pets extends React.Component {
       this.setState({
         searchParam: event.target.value,
       });
-      // console.log(this.state)
     }
 
     handleSearchSubmit (event) {
@@ -94,7 +94,13 @@ class Pets extends React.Component {
       this.setState({
         searched: true,
       });
-      // console.log(this.state);
+    }
+
+    clearSearch() {
+      event.preventDefault();
+      this.setState({
+        searched: false,
+      })
     }
 
     // Submits information in forms and picture to database
@@ -140,7 +146,6 @@ class Pets extends React.Component {
     getPets() {
       Axios.get('/user')
         .then(pets => {
-          // console.log(pets);
           let allPets = [];
           pets.data.forEach(pet => allPets.push(pet));
           this.setState({
@@ -150,15 +155,10 @@ class Pets extends React.Component {
         .catch(err => console.error(err));
     }
 
-    // handleSearch() {
-
-    // }
-
     render() {
       const { classes } = this.props;
   
       const { pets, searched, searchParam } = this.state;
-      // console.log(this.state.pets);
         return (
           <div>
             <Button
@@ -242,6 +242,7 @@ class Pets extends React.Component {
               <PetsList pets={pets} />
             </form>
             <LostListModal
+            clearSearch={this.clearSearch}
             state={this.state}
             allPets={pets}
             searched={searched}
