@@ -1,13 +1,8 @@
 
 import React from 'react';
-import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
-import Fab from '@material-ui/core/Fab';
-import Icon from '@material-ui/core/Icon';
-import SaveIcon from '@material-ui/icons/Save';
 
 
 
@@ -17,8 +12,8 @@ const useStyles = makeStyles(theme => ({
     flexWrap: 'wrap',
   },
   textField: {
-    // marginLeft: theme.spacing(1),
-    // marginRight: theme.spacing(1),
+    marginLeft: theme.spacing(1),
+    marginRight: theme.spacing(1),
     width: 200,
   },
   dense: {
@@ -32,7 +27,6 @@ const useStyles = makeStyles(theme => ({
 
 function SearchForm(props) {
   const classes = useStyles();
-    // console.log(props);
   return (
       <div>
     <form 

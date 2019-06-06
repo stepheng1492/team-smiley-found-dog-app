@@ -6,7 +6,8 @@ import GridListTileBar from '@material-ui/core/GridListTileBar';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import IconButton from '@material-ui/core/IconButton';
 import InfoIcon from '@material-ui/icons/Info';
-import Axios from 'axios';
+var moment = require('moment');
+
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -27,6 +28,7 @@ const useStyles = makeStyles(theme => ({
 
 
 export default function TitlebarGridList(props) {
+    console.log(props);
   const classes = useStyles();
  if (!props.state.searched) {
   return (      
@@ -40,7 +42,7 @@ export default function TitlebarGridList(props) {
             <img src={lostPet.image} alt={lostPet.name} />
             <GridListTileBar
               title={lostPet.name}
-              subtitle={<span>the {lostPet.type}</span>}
+              subtitle={<span>Posted {moment(lostPet.createdAt).fromNow()}</span>}
               actionIcon={
                 <IconButton aria-label={`info about ${lostPet.title}`} className={classes.icon}>
                   <InfoIcon />  
@@ -71,7 +73,7 @@ else {
                 <img src={lostPet.image} alt={lostPet.name} />
                 <GridListTileBar
                   title={lostPet.name}
-                  subtitle={<span>the {lostPet.type}</span>}
+                  subtitle={<span>Missing for X Days</span>}
                   actionIcon={
                     <IconButton aria-label={`info about ${lostPet.title}`} className={classes.icon}>
                       <InfoIcon />  

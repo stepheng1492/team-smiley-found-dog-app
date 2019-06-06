@@ -175,6 +175,7 @@ class Pets extends React.Component {
               <FormControl margin="normal" required fullWidth>
                 <InputLabel htmlFor="name">Owner Name</InputLabel>
                 <Input
+                required={true}
                   id="name"
                   type="text"
                   name="ownerName"
@@ -187,6 +188,7 @@ class Pets extends React.Component {
               <FormControl margin="normal" required fullWidth>
                 <InputLabel htmlFor="name">Pet Name</InputLabel>
                 <Input
+                required={true}
                   id="name"
                   type="text"
                   name="name"
@@ -198,6 +200,7 @@ class Pets extends React.Component {
               <FormControl margin="normal" required fullWidth>
                 <InputLabel htmlFor="type">Type</InputLabel>
                 <Input
+                  required={true}
                   id="email"
                   type="text"
                   name="type"
@@ -209,6 +212,7 @@ class Pets extends React.Component {
               <FormControl margin="normal" required fullWidth>
                 <InputLabel htmlFor="message">Message</InputLabel>
                 <Input
+                  required={true}
                   name="message"
                   type="text"
                   id="password"
@@ -220,6 +224,7 @@ class Pets extends React.Component {
               <FormControl margin="normal" required fullWidth>
                 <InputLabel htmlFor="contact">Contact Info</InputLabel>
                 <Input
+                required={true}
                   name="contact"
                   type="text"
                   id="contact"
