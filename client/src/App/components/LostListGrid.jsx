@@ -5,7 +5,7 @@ import GridListTile from '@material-ui/core/GridListTile';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import IconButton from '@material-ui/core/IconButton';
-import InfoIcon from '@material-ui/icons/Info';
+import CheckBox from '@material-ui/core/Checkbox';
 import Axios from 'axios';
 
 const useStyles = makeStyles(theme => ({
@@ -44,7 +44,7 @@ export default function TitlebarGridList(props) {
               subtitle={<span>{lostPet.type}</span>}
               actionIcon={
                 <IconButton aria-label={`info about ${lostPet.title}`} className={classes.icon}>
-                  <InfoIcon />  
+                  <CheckBox />  
                 </IconButton>
               }
             />

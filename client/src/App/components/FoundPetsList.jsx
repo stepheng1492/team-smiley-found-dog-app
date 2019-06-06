@@ -11,8 +11,17 @@ class FoundPetsList extends React.Component {
         }
         this.handleFound = this.handleFound.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.foundPets = this.foundPets.bind(this);
     }
 
+    //
+
+    foundPets() {
+        return axios.put('user', {
+            found: true
+        })
+        .then((results) => console.log(results))
+    }
 
     handleFound(event) {
         this.setState({ found: event.target.value })

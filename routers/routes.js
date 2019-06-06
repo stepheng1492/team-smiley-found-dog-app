@@ -64,7 +64,7 @@ router.route('/user')
           contact: contact,
         }})
         
-    }).put((req, res, next) => {
+    }).put((req, res) => {
         const { petId } = req.body;
         const values = { found: true }
         const selector = {
@@ -74,28 +74,8 @@ router.route('/user')
         }
         Pets.update(values, selector)
             .then((result) => console.log(result))
-        // Pets.found = true;
-        // Pets.save().then((result) => console.log(result));
     })
 
-// router.route('/user')
-//     // .get((req, res, next) => {
-//     //     Pets.findAll().then((pet) => {
-//     //         res.send(pet)
-//     //     })
-//     // })
-
-//     .put((req, res, next) => {
-//         const { petId } = req.body;
-//         const values = { found: true }
-//         const selector = {
-//             where: {
-//                 petId: petId,
-//             }
-//         }
-//         Pets.update(selector, values)
-//             .then((result) => console.log(result));
-//     })
 
 router.route('/comments')
     // gets all comments from database
