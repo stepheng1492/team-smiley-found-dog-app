@@ -93,13 +93,15 @@ class Pets extends React.Component {
       event.preventDefault();
       this.setState({
         searched: true,
+        
       });
     }
 
-    clearSearch() {
+    clearSearch(event) {
       event.preventDefault();
       this.setState({
         searched: false,
+        searchParam: '',
       })
     }
 

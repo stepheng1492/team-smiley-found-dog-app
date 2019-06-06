@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
@@ -27,6 +27,7 @@ const useStyles = makeStyles(theme => ({
 
 function SearchForm(props) {
   const classes = useStyles();
+console.log(props)
   return (
       <div>
     <form 
@@ -42,14 +43,15 @@ function SearchForm(props) {
         className={classes.textField}
         margin="normal"
         onChange={props.searchFunc}
+        value={props.state.searchParam}
         />
-    </form>
+        </form>
     <Button 
         variant="contained" 
         size="small" 
         className={classes.button}
         onClick={props.clearSearch}
-    >
+        >
         Clear Search
     </Button>
         </div>
