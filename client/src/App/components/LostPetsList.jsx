@@ -1,6 +1,12 @@
 import React from 'react';
 import axios from 'axios';
-import LostPetsListItem from './LostPetsListItem.jsx'
+import LostPetsListItem from './LostPetsListItem.jsx';
+import Typography from '@material-ui/core/Typography';
+import List from '@material-ui/core/List';
+
+
+
+
 
 class LostPetsList extends React.Component {
     constructor() {
@@ -10,10 +16,6 @@ class LostPetsList extends React.Component {
         };
         this.getPets = this.getPets.bind(this);
     }
-
-    /**
-     * getPets function makes request to server
-     */
 
     
     getPets() {
@@ -28,13 +30,16 @@ class LostPetsList extends React.Component {
             })
         })
     }
-    
+
     render() {
+
         return (<div>
-            <h1>Lost Pets</h1>
-            {this.state.pets.map(pet => {
-                return <LostPetsListItem pet={pet} />
-            })}
+            <Typography variant='h3' align='center'>Lost Pets</Typography>
+            <List>
+                {this.state.pets.map(pet => {
+                    return <LostPetsListItem pet={pet} />
+                })}
+            </List>
         </div>);
     }
 }

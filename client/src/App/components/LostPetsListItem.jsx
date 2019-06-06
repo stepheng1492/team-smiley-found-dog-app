@@ -30,7 +30,7 @@ class LostPetsListItem extends React.Component {
     render() {
         return (
             <div>
-            <li onClick={this.handleNameClick} className='petListItem'>name: {this.props.pet.name}</li>
+            <li onClick={this.handleNameClick} className='petListItem'>{this.props.pet.name}</li>
             {this.state.commentRender ? <Comments commentRender={this.commentRenderFalse} pet={this.props.pet}/> : null}
             </div>);
     }
