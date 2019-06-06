@@ -26,6 +26,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
+
 export default function TitlebarGridList(props) {
   const classes = useStyles();
 
@@ -40,7 +41,7 @@ export default function TitlebarGridList(props) {
             <img src={lostPet.image} alt={lostPet.name} />
             <GridListTileBar
               title={lostPet.name}
-              subtitle={<span>the {lostPet.type}</span>}
+              subtitle={<span>{lostPet.type}</span>}
               actionIcon={
                 <IconButton aria-label={`info about ${lostPet.title}`} className={classes.icon}>
                   <InfoIcon />  

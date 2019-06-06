@@ -14,6 +14,9 @@ class LostPetsList extends React.Component {
     /**
      * getPets function makes request to server
      */
+    // getFoundPets() {
+
+    // }
 
     
     getPets() {
