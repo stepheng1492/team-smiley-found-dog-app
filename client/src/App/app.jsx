@@ -16,8 +16,10 @@ import {BrowserRouter as Router , Switch , Route} from 'react-router-dom';
 // calls the material ui function that resolves to a default theme to be used on app
 const theme = createMuiTheme();
 
+
 // creat main app componet to be used with react
 function App(props){
+
    return (
     // use multi theme component to apply generated theme througout our app
    <MuiThemeProvider theme={theme}>
