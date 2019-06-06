@@ -28,8 +28,9 @@ const useStyles = makeStyles(theme => ({
 
 export default function TitlebarGridList(props) {
   const classes = useStyles();
-
-  return (
+  console.log(props);
+ if (!props.state.searched) {
+  return (      
     <div className={classes.root}>
       <GridList cellHeight={180} className={classes.gridList}>
         <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>
@@ -52,5 +53,38 @@ export default function TitlebarGridList(props) {
       </GridList>
     </div>
   );
+}
+else {
+    let filteredPets = props.allPets.filter( (pet) => {
+        if (pet.name) {
+            return pet.name.toLowerCase() === props.state.searchParam.toLowerCase() ||
+            pet.type.toLowerCase() === props.state.searchParam.toLowerCase();
+        }
+    });
+    console.log(filteredPets);
+    return (      
+        <div className={classes.root}>
+          <GridList cellHeight={180} className={classes.gridList}>
+            <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>
+              <ListSubheader component="div">Currently Missing Pets</ListSubheader>
+            </GridListTile>
+            {filteredPets.map(lostPet => (
+              <GridListTile key={lostPet.image}>
+                <img src={lostPet.image} alt={lostPet.name} />
+                <GridListTileBar
+                  title={lostPet.name}
+                  subtitle={<span>the {lostPet.type}</span>}
+                  actionIcon={
+                    <IconButton aria-label={`info about ${lostPet.title}`} className={classes.icon}>
+                      <InfoIcon />  
+                    </IconButton>
+                  }
+                />
+              </GridListTile>
+            ))}
+          </GridList>
+        </div>
+      );
+}
 }
 
