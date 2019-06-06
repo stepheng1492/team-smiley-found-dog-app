@@ -1,11 +1,18 @@
 import React from 'react';
 import axios from 'axios';
 import LostPetsListItem from './LostPetsListItem.jsx';
-import Typography from '@material-ui/core/Typography';
-import List from '@material-ui/core/List';
 
+const subheadStyle = {
+    fontStyle: 'calibri',
+    textAlign: 'center',
+    fontWeight: 'bold',
+}
 
-
+const titleStyle = {
+    fontStyle: 'calibri',
+    textAlign: 'center',
+    fontWeight: 'bold',
+}
 
 
 class LostPetsList extends React.Component {
@@ -34,12 +41,11 @@ class LostPetsList extends React.Component {
     render() {
 
         return (<div>
-            <Typography variant='h3' align='center'>Lost Pets</Typography>
-            <List>
+            <h1 className='petListItem' style={titleStyle}>Lost Pets</h1>
+            <h3 className='petListItem' style={subheadStyle}>click on a pet to add or view comments</h3>
                 {this.state.pets.map(pet => {
                     return <LostPetsListItem pet={pet} />
                 })}
-            </List>
         </div>);
     }
 }

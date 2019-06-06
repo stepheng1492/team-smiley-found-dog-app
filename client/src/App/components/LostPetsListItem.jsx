@@ -1,6 +1,12 @@
 import React from 'react';
 import Comments from './Comments.jsx'
 
+const liStyle = {
+    listStyle: 'none',
+    color: 'blue',
+    cursor: 'pointer',
+};
+
 class LostPetsListItem extends React.Component {
     constructor() {
         super();
@@ -30,7 +36,7 @@ class LostPetsListItem extends React.Component {
     render() {
         return (
             <div>
-            <li onClick={this.handleNameClick} className='petListItem'>{this.props.pet.name}</li>
+            <li style={liStyle} align='center' onClick={this.handleNameClick} className='petListItem'>{this.props.pet.name}</li>
             {this.state.commentRender ? <Comments commentRender={this.commentRenderFalse} pet={this.props.pet}/> : null}
             </div>);
     }
