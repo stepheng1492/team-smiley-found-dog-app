@@ -50,6 +50,7 @@ class Pets extends React.Component {
             pets: [],
             searched: false,
             searchParam: '',
+            foundPets: [],
             widget: window.cloudinary.createUploadWidget({
         cloud_name: `duubp6wjp`,
         uploadPreset: `wwcugh6n` },
@@ -64,10 +65,31 @@ class Pets extends React.Component {
         this.getPets = this.getPets.bind(this);
         this.handleSearchBar = this.handleSearchBar.bind(this);
         this.handleSearchSubmit = this.handleSearchSubmit.bind(this);
+        this.getFoundPets = this.getFoundPets.bind(this);
+        this.foundPets = this.foundPets.bind(this);
         this.clearSearch = this.clearSearch.bind(this);
     }
 
+    foundPets() {
+      return axios.put('user', {
+          found: true
+      })
+      .then((results) => console.log(results))
+    }
 
+    getFoundPets() {
+      return axios.get('user', {
+        params: {
+          found: this.props.pets.found
+        }
+      }).then((results) => {
+        let foundPets = [];
+          results.data.forEach(pet => foundPets.push(pet));
+          this.setState({
+            foundPets: foundPets,
+          })
+      })
+    }
 
     componentDidMount() {
       this.getPets();
