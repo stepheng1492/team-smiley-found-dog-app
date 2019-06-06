@@ -41,7 +41,7 @@ class LostPetsList extends React.Component {
     render() {
 
         return (<div>
-            <h1 className='petListItem' style={titleStyle}>Lost Pets</h1>
+            <h1 className='petListItem' style={titleStyle}>Pets</h1>
             <h3 className='petListItem' style={subheadStyle}>click on a pet to add or view comments</h3>
                 {this.state.pets.map(pet => {
                     return <LostPetsListItem pet={pet} />

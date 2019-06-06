@@ -6,8 +6,6 @@ import { withRouter, Link } from 'react-router-dom'
 import Pets from '../../components/Pets.jsx'
 
 
-
-
 const styles = theme => ({
     main: {
         width: 'auto',
@@ -65,7 +63,7 @@ function Dash(props) {
                     component={Link}
                     to="/lostpets"
                     className={classes.submit}>
-                    LOST PETS COMMENTS
+                    PET COMMENTS
                 </Button>
             </Paper>
             
