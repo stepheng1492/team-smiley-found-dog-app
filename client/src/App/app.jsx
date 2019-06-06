@@ -11,6 +11,7 @@ import { MuiThemeProvider , createMuiTheme } from '@material-ui/core/styles';
 import  { CssBaseline , CircularProgress } from '@material-ui/core';
 // imports components we need to proper route the different pages to the dom
 import {BrowserRouter as Router , Switch , Route} from 'react-router-dom';
+import { auth, provider } from './firebaseConfig.js';
 
 
 // calls the material ui function that resolves to a default theme to be used on app

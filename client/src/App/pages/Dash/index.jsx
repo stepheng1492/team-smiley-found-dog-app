@@ -65,7 +65,7 @@ function Dash(props) {
                     component={Link}
                     to="/lostpets"
                     className={classes.submit}>
-                    LOST PETS COMMENTS
+                    PET COMMENTS
                 </Button>
             </Paper>
             
