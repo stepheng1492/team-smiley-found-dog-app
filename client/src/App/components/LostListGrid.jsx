@@ -7,6 +7,9 @@ import ListSubheader from '@material-ui/core/ListSubheader';
 import IconButton from '@material-ui/core/IconButton';
 import CheckBox from '@material-ui/core/Checkbox';
 import axios from 'axios';
+import InfoIcon from '@material-ui/icons/Info';
+var moment = require('moment');
+
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -38,8 +41,8 @@ export default function TitlebarGridList(props) {
     .then((results) => console.log(results))
   }
 
+    console.log(props);
   const classes = useStyles();
-  console.log(props);
  if (!props.state.searched) {
   return (      
     <div className={classes.root}>
@@ -53,6 +56,7 @@ export default function TitlebarGridList(props) {
             <GridListTileBar
               title={lostPet.name}
               subtitle={<span>{lostPet.type}</span>}
+              subtitle={<span>Posted {moment(lostPet.createdAt).fromNow()}</span>}
               actionIcon={
                 <IconButton aria-label={`info about ${lostPet.title}`} className={classes.icon}>
                   <CheckBox onClick={() => {foundPets(lostPet.id)}}/>  
@@ -72,7 +76,6 @@ else {
             pet.type.toLowerCase() === props.state.searchParam.toLowerCase();
         }
     });
-    console.log(filteredPets);
     return (      
         <div className={classes.root}>
           <GridList cellHeight={180} className={classes.gridList}>
@@ -84,7 +87,7 @@ else {
                 <img src={lostPet.image} alt={lostPet.name} />
                 <GridListTileBar
                   title={lostPet.name}
-                  subtitle={<span>the {lostPet.type}</span>}
+                  subtitle={<span>Missing for X Days</span>}
                   actionIcon={
                     <IconButton aria-label={`info about ${lostPet.title}`} className={classes.icon}>
                       <InfoIcon />  

@@ -1,6 +1,19 @@
 import React from 'react';
 import axios from 'axios';
-import LostPetsListItem from './LostPetsListItem.jsx'
+import LostPetsListItem from './LostPetsListItem.jsx';
+
+const subheadStyle = {
+    fontStyle: 'calibri',
+    textAlign: 'center',
+    fontWeight: 'bold',
+}
+
+const titleStyle = {
+    fontStyle: 'calibri',
+    textAlign: 'center',
+    fontWeight: 'bold',
+}
+
 
 class LostPetsList extends React.Component {
     constructor() {
@@ -31,13 +44,15 @@ class LostPetsList extends React.Component {
             })
         })
     }
-    
+
     render() {
+
         return (<div>
-            <h1>Lost Pets</h1>
-            {this.state.pets.map(pet => {
-                return <LostPetsListItem pet={pet} />
-            })}
+            <h1 className='petListItem' style={titleStyle}>Lost Pets</h1>
+            <h3 className='petListItem' style={subheadStyle}>click on a pet to add or view comments</h3>
+                {this.state.pets.map(pet => {
+                    return <LostPetsListItem pet={pet} />
+                })}
         </div>);
     }
 }

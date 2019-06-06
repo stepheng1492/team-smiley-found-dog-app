@@ -98,7 +98,8 @@ function LostPetModal(props) {
                     <Typography variant="h6" id="modal-title" align="center">
                         Have You Seen Me?
                     </Typography>
-                    <SearchBar 
+                    <SearchBar
+                    clearSearch={props.clearSearch}
                     state={props.state}
                     searchFunc={props.searchFunc}
                     handleSearchSubmit={props.handleSearchSubmit}

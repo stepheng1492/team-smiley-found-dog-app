@@ -1,10 +1,12 @@
 
-import React from 'react';
+
 import clsx from 'clsx';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
+
+
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -12,8 +14,8 @@ const useStyles = makeStyles(theme => ({
     flexWrap: 'wrap',
   },
   textField: {
-    // marginLeft: theme.spacing(1),
-    // marginRight: theme.spacing(1),
+    marginLeft: theme.spacing(1),
+    marginRight: theme.spacing(1),
     width: 200,
   },
   dense: {
@@ -26,17 +28,8 @@ const useStyles = makeStyles(theme => ({
 
 
 function SearchForm(props) {
-    // console.log(props);
   const classes = useStyles();
-  const [values, setValues] = React.useState({
-    name: 'Cat in the Hat',
-    age: '',
-    multiline: 'Controlled',
-    currency: 'EUR',
-  });
-//   console.log(props)
-
-
+console.log(props)
   return (
       <div>
     <form 
@@ -52,14 +45,17 @@ function SearchForm(props) {
         className={classes.textField}
         margin="normal"
         onChange={props.searchFunc}
+        value={props.state.searchParam}
         />
-    </form>
+        </form>
     <Button 
-    variant="outlined" 
-    className={classes.button}
-    >
-    Submit
-  </Button>
+        variant="contained" 
+        size="small" 
+        className={classes.button}
+        onClick={props.clearSearch}
+        >
+        Clear Search
+    </Button>
         </div>
   );
 }

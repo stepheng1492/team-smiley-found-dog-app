@@ -67,6 +67,7 @@ class Pets extends React.Component {
         this.handleSearchSubmit = this.handleSearchSubmit.bind(this);
         this.getFoundPets = this.getFoundPets.bind(this);
         this.foundPets = this.foundPets.bind(this);
+        this.clearSearch = this.clearSearch.bind(this);
     }
 
     foundPets() {
@@ -108,15 +109,22 @@ class Pets extends React.Component {
       this.setState({
         searchParam: event.target.value,
       });
-      // console.log(this.state)
     }
 
     handleSearchSubmit (event) {
       event.preventDefault();
       this.setState({
         searched: true,
+        
       });
-      // console.log(this.state);
+    }
+
+    clearSearch(event) {
+      event.preventDefault();
+      this.setState({
+        searched: false,
+        searchParam: '',
+      })
     }
 
     // Submits information in forms and picture to database
@@ -162,7 +170,6 @@ class Pets extends React.Component {
     getPets() {
       Axios.get('/user')
         .then(pets => {
-          // console.log(pets);
           let allPets = [];
           pets.data.forEach(pet => allPets.push(pet));
           this.setState({
@@ -172,15 +179,10 @@ class Pets extends React.Component {
         .catch(err => console.error(err));
     }
 
-    // handleSearch() {
-
-    // }
-
     render() {
       const { classes } = this.props;
   
       const { pets, searched, searchParam } = this.state;
-      // console.log(this.state.pets);
         return (
           <div>
             <Button
@@ -197,6 +199,7 @@ class Pets extends React.Component {
               <FormControl margin="normal" required fullWidth>
                 <InputLabel htmlFor="name">Owner Name</InputLabel>
                 <Input
+                required={true}
                   id="name"
                   type="text"
                   name="ownerName"
@@ -209,6 +212,7 @@ class Pets extends React.Component {
               <FormControl margin="normal" required fullWidth>
                 <InputLabel htmlFor="name">Pet Name</InputLabel>
                 <Input
+                required={true}
                   id="name"
                   type="text"
                   name="name"
@@ -220,6 +224,7 @@ class Pets extends React.Component {
               <FormControl margin="normal" required fullWidth>
                 <InputLabel htmlFor="type">Type</InputLabel>
                 <Input
+                  required={true}
                   id="email"
                   type="text"
                   name="type"
@@ -231,6 +236,7 @@ class Pets extends React.Component {
               <FormControl margin="normal" required fullWidth>
                 <InputLabel htmlFor="message">Message</InputLabel>
                 <Input
+                  required={true}
                   name="message"
                   type="text"
                   id="password"
@@ -242,6 +248,7 @@ class Pets extends React.Component {
               <FormControl margin="normal" required fullWidth>
                 <InputLabel htmlFor="contact">Contact Info</InputLabel>
                 <Input
+                required={true}
                   name="contact"
                   type="text"
                   id="contact"
@@ -264,6 +271,7 @@ class Pets extends React.Component {
               <PetsList pets={pets} />
             </form>
             <LostListModal
+            clearSearch={this.clearSearch}
             state={this.state}
             allPets={pets}
             searched={searched}
