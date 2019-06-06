@@ -1,5 +1,5 @@
 import React from 'react';
-import Axios from 'axios';
+import axios from 'axios';
 import { Button, FormControl, Input, InputLabel } from '@material-ui/core'
 import withStyles from "@material-ui/core/styles/withStyles";
 import PetsList from './PetsList.jsx';
@@ -132,23 +132,32 @@ class Pets extends React.Component {
       const { ownerName, name, type, message, image, contact } = this.state;
       event.preventDefault();
         // post request to db with info
-        Axios.post('/user', {
+        axios.post('/user', {
           ownerName: ownerName,
           name: name,
           type: type,
           message: message,
           contact: contact,
           image: image,
-        }).then(response => console.log(response))
-
-        this.setState({
-          ownerName: '',
-          name: '',
-          type: '',
-          message: '',
-          image: '',
-          contact: '',
+        }).then(response => {
+          axios.get('/user')
+            .then(pets => {
+              let allPets = [];
+              pets.data.forEach(pet => allPets.push(pet));
+              this.setState({
+                pets: allPets,
+              })
+            })         
         })
+            this.setState({
+              ownerName: '',
+              name: '',
+              type: '',
+              message: '',
+              image: '',
+              contact: '',
+            })
+        
       }
     
       // allows widget to be displayed
@@ -168,7 +177,7 @@ class Pets extends React.Component {
 
     // gets all pets from database to show on page
     getPets() {
-      Axios.get('/user')
+      axios.get('/user')
         .then(pets => {
           let allPets = [];
           pets.data.forEach(pet => allPets.push(pet));

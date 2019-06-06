@@ -6,8 +6,6 @@ import { withRouter, Link } from 'react-router-dom'
 import Pets from '../../components/Pets.jsx'
 
 
-
-
 const styles = theme => ({
     main: {
         width: 'auto',
