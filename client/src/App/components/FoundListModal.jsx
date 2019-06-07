@@ -108,6 +108,7 @@ function FoundListModal(props) {
 
                     </Typography>
                     <TitlebarGridList 
+                        handleFoundClick={props.handleFoundClick}
                         allPets={props.allPets} 
                         state={props.state}
                     />
