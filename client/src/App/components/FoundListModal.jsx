@@ -96,7 +96,7 @@ function FoundListModal(props) {
             >
                 <div style={modalStyle} className={classes.paper}>
                     <Typography variant="h6" id="modal-title" align="center">
-                        Have You Seen Me?
+                        Found Pets
                     </Typography>
                     <SearchBar
                     clearSearch={props.clearSearch}

@@ -51,7 +51,6 @@ export default function TitlebarGridList(props) {
     <div className={classes.root}>
       <GridList cellHeight={180} className={classes.gridList}>
         <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>
-          <ListSubheader component="div">Currently Missing Pets</ListSubheader>
         </GridListTile>
         {nonLostPets.map(lostPet => (
           <GridListTile key={lostPet.image}>
@@ -83,7 +82,7 @@ else {
         <div className={classes.root}>
           <GridList cellHeight={180} className={classes.gridList}>
             <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>
-              <ListSubheader component="div">Currently Missing Pets</ListSubheader>
+              <ListSubheader component="div">Found Pets</ListSubheader>
             </GridListTile>
             {filteredPets.map(lostPet => (
               <GridListTile key={lostPet.image}>
