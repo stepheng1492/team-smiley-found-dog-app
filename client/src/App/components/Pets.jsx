@@ -280,6 +280,7 @@ class Pets extends React.Component {
             handleSearchSubmit={this.handleSearchSubmit}
             />
             <FoundListModal 
+            handleFoundClick={this.handleFoundClick}
             clearSearch={this.clearSearch}
             state={this.state}
             allPets={pets}
