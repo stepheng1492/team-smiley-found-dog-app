@@ -47,6 +47,7 @@
     "react-with-firebase-auth": "^1.0.3",
     "sequelize": "^5.8.7",
     "style-loader": "^0.23.1",
+    "twilio": "^3.31.1",
     "typeface-roboto": "0.0.54",
     "use-force-update": "^1.0.5"
   },

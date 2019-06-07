@@ -5,6 +5,8 @@ const passport = require('passport');
 // const Sequelize = require('sequelize');
 // require('../database-psql/index.js');
 const { User, Pets, Comments } = require('../database-psql/index.js');
+require('dotenv').config();
+const client = require('twilio')(process.env.accountSid, process.env.authToken);
 //define router instance
 const router = express.Router();
 const app = express();
@@ -89,6 +91,16 @@ router.route('/comments')
         }})
         res.send('comment added');
     })
+
+router.route('/texts')
+    .post((req) => {
+        client.messages.create({
+            to: req.body.contact,
+            from: '+15045968529',
+            body: `Hey! This is an alert from FoundPets.com that someone has found ${req.body.ownerName}!`
+        });
+    });
+
 
 
 

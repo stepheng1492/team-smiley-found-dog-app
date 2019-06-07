@@ -65,11 +65,20 @@ class Pets extends React.Component {
         this.getPets = this.getPets.bind(this);
         this.handleSearchBar = this.handleSearchBar.bind(this);
         this.handleSearchSubmit = this.handleSearchSubmit.bind(this);
-        // this.getFoundPets = this.getFoundPets.bind(this);
-        // this.foundPets = this.foundPets.bind(this);
         this.clearSearch = this.clearSearch.bind(this);
         this.handleFoundClick = this.handleFoundClick.bind(this);
+        // this.sendText = this.sendText.bind(this);
     }
+
+    // sendText() {
+    //   let phone = props.contact.replace(/-/g, "");
+    //   phone = "+1" + phone;
+
+    //   axios.post('/texts', {
+    //       contact,
+    //       message: 'Hey this an alert!'
+    //   });
+    // }
 
     componentDidMount() {
       this.getPets();

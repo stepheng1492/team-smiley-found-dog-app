@@ -30,20 +30,25 @@ const useStyles = makeStyles(theme => ({
 
 
 
-function useForceUpdate() {
-    const [value, set] = useState(true);
-    return () => set(!value);
-}
-
-
 export default function TitlebarGridList(props) {
-
-    const forceUpdate = useForceUpdate();
 
     const allLostPets = props.allPets.filter((pet) => {
         return pet.found === false;
     })
 
+    const sendText = () => {
+        let contact;
+        props.allPets.forEach((pet) => {
+            contact = pet.contact.replace(/-/g, "");
+            contact = "+1" + contact;
+        })
+
+      axios.post('/texts', {
+          contact,
+          message: 'Hey this an alert!'
+      });
+    }
+ 
     const foundPets = (petId, pet, arr) => {
         pet.found = !pet.found;
         props.handleFoundClick(arr)
@@ -70,7 +75,7 @@ export default function TitlebarGridList(props) {
                                 subtitle={<span>Posted {moment(lostPet.createdAt).fromNow()}</span>}
                                 actionIcon={
                                     <IconButton aria-label={`info about ${lostPet.title}`} className={classes.icon}>
-                                        <CheckBox onClick={() => { foundPets(lostPet.id, lostPet, allLostPets) }} />
+                                        <CheckBox onClick={() => { foundPets(lostPet.id, lostPet, allLostPets); sendText() }} />
                                     </IconButton>
                                 }
                             />
@@ -101,7 +106,7 @@ export default function TitlebarGridList(props) {
                                 subtitle={<span>Posted {moment(lostPet.createdAt).fromNow()}</span>}
                                 actionIcon={
                                     <IconButton aria-label={`info about ${lostPet.title}`} className={classes.icon}>
-                                        <CheckBox onClick={() => { foundPets(lostPet.id) }} />
+                                        <CheckBox onClick={() => { foundPets(lostPet.id); sendText() }} />
                                     </IconButton>
                                 }
                             />
