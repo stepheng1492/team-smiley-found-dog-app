@@ -49,6 +49,7 @@ export default function TitlebarGridList(props) {
         props.handleFoundClick(arr)
         return axios.put('/user', {
             petId,
+            found: pet.found,
         })
     }
     const classes = useStyles();
