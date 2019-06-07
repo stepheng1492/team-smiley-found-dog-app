@@ -60,13 +60,9 @@ function Comments(props) {
         axios.post('/comments', {
             petId: props.pet.id,
             message: comment,
-        }).then(() => {
-            axios.get('/comments').then((results) => {
-                setState({comments: results.data});
-            })
         })
-        
-        setState({message: ''});
+        comments.push({message: comment, petId: props.pet.id})        
+        setState({message: '', comments,});
         
     }
     const handleMessage = (e) => {
