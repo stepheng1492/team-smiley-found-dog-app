@@ -40,7 +40,7 @@ function SearchForm(props) {
     >
       <TextField
         id="standard-search"
-        label="Search lost pets"
+        label="Search"
         type="search"
         className={classes.textField}
         margin="normal"

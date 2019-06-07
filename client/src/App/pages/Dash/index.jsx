@@ -41,18 +41,15 @@ function Dash(props) {
     return (
         <main className={classes.main}>
             <Paper className={classes.paper}>
-            <i className="material-icons" onClick={props.whichTheme}>
-        brightness_6
-      </i>
-                {/* <Avatar className={classes.avatar}>
-                    <VerifiedUserOutlined />
-                </Avatar> */}
+                <i className="material-icons" onClick={props.whichTheme}>
+                    brightness_6
+            </i>
                 <Typography component="h1" variant="h5">
                     Welcome Back!
                 </Typography>
 
                 <Typography component="h1" variant="h5">
-                    Lost Pet? 
+                    Lost Pet?
                 </Typography>
                 <Pets />
                 <Button
@@ -67,7 +64,7 @@ function Dash(props) {
                     PET COMMENTS
                 </Button>
             </Paper>
-            
+
         </main>
 
     )

@@ -39,7 +39,7 @@ const whichTheme = () => {
 // creat main app componet to be used with react
 function App(props){
    const [toggle, setToggle] = useState(false);
-   if (!toggle) {   
+   if (toggle === false) {   
    return (
     // use multi theme component to apply generated theme througout our app
    <MuiThemeProvider theme={theme}>
@@ -65,7 +65,7 @@ function App(props){
       </Router>
    </MuiThemeProvider>
    )}
-   else {
+   else if (toggle) {
       return (
          <MuiThemeProvider theme={darkTheme}>
           {/* use baseline component to give css functionality to individual components/pages in the app */}
