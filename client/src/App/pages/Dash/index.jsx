@@ -4,6 +4,7 @@ import VerifiedUserOutlined from '@material-ui/icons/VerifiedUserOutlined'
 import withStyles from '@material-ui/core/styles/withStyles'
 import { withRouter, Link } from 'react-router-dom'
 import Pets from '../../components/Pets.jsx'
+import brightness_6 from '@material-ui/icons'
 
 
 const styles = theme => ({
@@ -35,23 +36,20 @@ const styles = theme => ({
 })
 
 function Dash(props) {
+    console.log(props)
     const { classes } = props
-
-    const [fruit, setFruit] = useState('')
-
-
     return (
         <main className={classes.main}>
             <Paper className={classes.paper}>
-                <Avatar className={classes.avatar}>
-                    <VerifiedUserOutlined />
-                </Avatar>
+                <i className="material-icons" onClick={props.whichTheme}>
+                    brightness_6
+            </i>
                 <Typography component="h1" variant="h5">
                     Welcome Back!
                 </Typography>
 
                 <Typography component="h1" variant="h5">
-                    Lost Pet? 
+                    Lost Pet?
                 </Typography>
                 <Pets />
                 <Button
@@ -66,7 +64,7 @@ function Dash(props) {
                     PET COMMENTS
                 </Button>
             </Paper>
-            
+
         </main>
 
     )
