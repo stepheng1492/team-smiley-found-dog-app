@@ -137,16 +137,18 @@ class Pets extends React.Component {
       message: message,
       contact: contact,
       image: image,
-    }).then(response => {
-      axios.get('/user')
-        .then(pets => {
-          let allPets = [];
-          pets.data.forEach(pet => allPets.push(pet));
-          this.setState({
-            pets: allPets,
-          })
-        })
     })
+    let newArr = this.state.pets
+    newArr.push({
+      id: newArr.length,
+      ownerName,
+      name,
+      type,
+      message,
+      contact,
+      image,
+      found: false,
+    });
     this.setState({
       ownerName: '',
       name: '',
@@ -154,8 +156,9 @@ class Pets extends React.Component {
       message: '',
       image: '',
       contact: '',
+      pets: newArr,
     })
-
+    console.log(this.state.pets);
   }
 
   // allows widget to be displayed
@@ -166,7 +169,6 @@ class Pets extends React.Component {
   // when image is loaded to cloudinary, grab url to save into database
   checkUploadResult(resultEvent) {
     if (resultEvent.event === 'success') {
-      console.log(resultEvent);
       this.setState({
         image: resultEvent.info.secure_url
       })
@@ -174,7 +176,6 @@ class Pets extends React.Component {
   }
 
   toggleNight() {
-    console.log('test')
     // var body = document.getElementById("body");
     // var currentClass = body.className;
     // body.className = currentClass == "dark-mode" ? "light-mode" : "dark-mode";

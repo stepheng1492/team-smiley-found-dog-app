@@ -52,7 +52,6 @@ export default function TitlebarGridList(props) {
     const foundPets = (petId, pet, arr) => {
         pet.found = !pet.found;
         props.handleFoundClick(arr);
-        console.log(arr);
         return axios.put('/user', {
             petId,
             found: !pet.found,
@@ -67,21 +66,24 @@ export default function TitlebarGridList(props) {
                     <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>
                         <ListSubheader component="div">Currently Missing Pets</ListSubheader>
                     </GridListTile>
-                    {allLostPets.map((lostPet, idx )=> (
-                        <GridListTile key={lostPet.image}>
-                            <img src={lostPet.image} alt={lostPet.name} />
-                            <GridListTileBar
-                                title={lostPet.name}
-                                subtitle={<span>{lostPet.type}</span>}
-                                subtitle={<span>Posted {moment(lostPet.createdAt).fromNow()}</span>}
-                                actionIcon={
-                                    <IconButton aria-label={`info about ${lostPet.title}`} className={classes.icon}>
-                                        <CheckBox onClick={() => { foundPets(lostPet.id, lostPet, allLostPets); sendText() }} />
-                                    </IconButton>
-                                }
-                            />
-                        </GridListTile>
-                    ))}
+                    {allLostPets.map((lostPet, idx ) => {
+                       return (
+                           <GridListTile key={lostPet.image}>
+                               <img src={lostPet.image} alt={lostPet.name} />
+                               <GridListTileBar
+                                   title={lostPet.name}
+                                   subtitle={<span>{lostPet.type}</span>}
+                                   subtitle={<span>Posted {moment(lostPet.createdAt).fromNow()}</span>}
+                                   actionIcon={
+                                       <IconButton aria-label={`info about ${lostPet.title}`} className={classes.icon}>
+                                           <CheckBox onClick={() => { foundPets(lostPet.id, lostPet, props.allPets); sendText() }} />
+                                       </IconButton>
+                                   }
+                               />
+                           </GridListTile>
+                       )
+                    }
+                    )}
                 </GridList>
             </div>
         );
@@ -107,7 +109,7 @@ export default function TitlebarGridList(props) {
                                 subtitle={<span>Posted {moment(lostPet.createdAt).fromNow()}</span>}
                                 actionIcon={
                                     <IconButton aria-label={`info about ${lostPet.title}`} className={classes.icon}>
-                                        <CheckBox onClick={() => { foundPets(lostPet.id, lostPet, allLostPets) }} />
+                                        <CheckBox onClick={() => { foundPets(lostPet.id, lostPet, props.allPets); sendText();}} />
                                     </IconButton>
                                 }
                             />
