@@ -68,31 +68,17 @@ class Pets extends React.Component {
         // this.getFoundPets = this.getFoundPets.bind(this);
         // this.foundPets = this.foundPets.bind(this);
         this.clearSearch = this.clearSearch.bind(this);
+        this.handleFoundClick = this.handleFoundClick.bind(this);
     }
-    // this.state.pets.filter
-    // foundPets() {
-    //   return axios.put('user', {
-    //       found: true
-    //   })
-    //   .then((results) => console.log(results))
-    // }
-
-    // getFoundPets() {
-    //   return axios.get('user', {
-    //     params: {
-    //       found: this.props.pets.found
-    //     }
-    //   }).then((results) => {
-    //     let foundPets = [];
-    //       results.data.forEach(pet => foundPets.push(pet));
-    //       this.setState({
-    //         foundPets: foundPets,
-    //       })
-    //   })
-    // }
 
     componentDidMount() {
       this.getPets();
+    }
+
+    handleFoundClick(pets) {
+      this.setState({
+        pets: pets
+      })
     }
 
     // grabs information from forms by name and value entered, sets state
@@ -179,11 +165,14 @@ class Pets extends React.Component {
     getPets() {
       axios.get('/user')
         .then(pets => {
-          let allPets = [];
-          pets.data.forEach(pet => allPets.push(pet));
           this.setState({
-            pets: allPets,
+            pets: pets.data,
           })
+          // let allPets = [];
+          // pets.data.forEach(pet => allPets.push(pet));
+          // this.setState({
+          //   pets: allPets,
+          // })
         })
         .catch(err => console.error(err));
     }
@@ -280,6 +269,7 @@ class Pets extends React.Component {
               <PetsList pets={pets} />
             </form>
             <LostListModal
+            handleFoundClick={this.handleFoundClick}
             getPets={this.getPets}
             clearSearch={this.clearSearch}
             state={this.state}

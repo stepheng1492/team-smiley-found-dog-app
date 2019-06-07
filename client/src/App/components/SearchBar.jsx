@@ -29,7 +29,7 @@ const useStyles = makeStyles(theme => ({
 
 function SearchForm(props) {
   const classes = useStyles();
-console.log(props)
+// console.log(props)
   return (
       <div>
     <form 
