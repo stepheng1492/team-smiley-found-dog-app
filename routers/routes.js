@@ -63,8 +63,8 @@ router.route('/user')
         }})
         
     }).put((req, res) => {
-        const { petId } = req.body;
-        const values = { found: true }
+        const { petId, found } = req.body;
+        const values = { found: !found }
         const selector = {
             where: {
                 id: petId,

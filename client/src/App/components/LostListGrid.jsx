@@ -54,8 +54,8 @@ export default function TitlebarGridList(props) {
         props.handleFoundClick(arr)
         return axios.put('/user', {
             petId,
+            found: !pet.found,
         })
-        // .then(props.getPets())
     }
     const classes = useStyles();
     if (!props.state.searched) {
@@ -106,7 +106,7 @@ export default function TitlebarGridList(props) {
                                 subtitle={<span>Posted {moment(lostPet.createdAt).fromNow()}</span>}
                                 actionIcon={
                                     <IconButton aria-label={`info about ${lostPet.title}`} className={classes.icon}>
-                                        <CheckBox onClick={() => { foundPets(lostPet.id); sendText() }} />
+                                        <CheckBox onClick={() => { foundPets(lostPet.id, lostPet, allLostPets) }} />
                                     </IconButton>
                                 }
                             />

@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { Button, FormControl, Input, InputLabel } from '@material-ui/core'
 import withStyles from "@material-ui/core/styles/withStyles";
-import PetsList from './PetsList.jsx';
+// import PetsList from './PetsList.jsx';
 import LostListModal from './LostListModal.jsx'
 import FoundListModal from './FoundListModal.jsx'
 
@@ -275,7 +275,7 @@ class Pets extends React.Component {
               >
                 Submit Pet!
               </Button>
-              <PetsList pets={pets} />
+              {/* <PetsList pets={pets} /> */}
             </form>
             <LostListModal
             handleFoundClick={this.handleFoundClick}
@@ -289,6 +289,7 @@ class Pets extends React.Component {
             handleSearchSubmit={this.handleSearchSubmit}
             />
             <FoundListModal 
+            handleFoundClick={this.handleFoundClick}
             clearSearch={this.clearSearch}
             state={this.state}
             allPets={pets}
