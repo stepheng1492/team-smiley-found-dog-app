@@ -50,7 +50,6 @@ export default function TitlebarGridList(props) {
         return axios.put('/user', {
             petId,
         })
-        // .then(props.getPets())
     }
     const classes = useStyles();
     if (!props.state.searched) {
