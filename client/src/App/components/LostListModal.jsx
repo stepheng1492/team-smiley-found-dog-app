@@ -113,6 +113,7 @@ function LostPetModal(props) {
                         getPets={props.getPets}
                         allPets={props.allPets} 
                         state={props.state}
+                        getPets={props.getPets}
                     />
                 </div>
             </Modal>
