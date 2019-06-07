@@ -38,7 +38,13 @@ const whichTheme = () => {
 
 // creat main app componet to be used with react
 function App(props){
-   const [toggle, setToggle] = useState(false);
+   let [toggle, setToggle] = useState(false);
+   // setToggle = () => {
+   //    toggle = !toggle
+   // }
+   const letsToggle = () => {
+      setToggle(!toggle)
+   }
    if (toggle === false) {   
    return (
     // use multi theme component to apply generated theme througout our app
@@ -57,7 +63,7 @@ function App(props){
                <Route exact path='/dash' 
                   // component={Dash} 
                   // changeTheme={whichTheme}
-                  render={(props) => (<Dash {...props} whichTheme={setToggle}/>)}
+                  render={(props) => (<Dash {...props} whichTheme={letsToggle}/>)}
                   />
                    {/* add route for new map page */}
                <Route exact path='/lostpets' component={LostPets} />
@@ -65,7 +71,7 @@ function App(props){
       </Router>
    </MuiThemeProvider>
    )}
-   else if (toggle) {
+   else if (toggle === true) {
       return (
          <MuiThemeProvider theme={darkTheme}>
           {/* use baseline component to give css functionality to individual components/pages in the app */}
@@ -82,7 +88,7 @@ function App(props){
                <Route exact path='/dash' 
                   // component={Dash} 
                   // changeTheme={whichTheme}
-                  render={(props) => (<Dash {...props} whichTheme={setToggle}/>)}
+                  render={(props) => (<Dash {...props} whichTheme={letsToggle}/>)}
                   />
                    {/* add route for new map page */}
                <Route exact path='/lostpets' component={LostPets} />
