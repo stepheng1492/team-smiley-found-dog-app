@@ -37,7 +37,6 @@ export default function TitlebarGridList(props) {
   const nonLostPets = props.allPets.filter((pet) => {
     return pet.found === true;
   })
-  console.log(nonLostPets)
 
   const foundPets = (petId) => {
     return axios.put('/user', {
@@ -46,7 +45,6 @@ export default function TitlebarGridList(props) {
     .then((results) => console.log(results))
   }
 
-    console.log(props);
   const classes = useStyles();
  if (!props.state.searched) {
   return (      
@@ -92,7 +90,7 @@ else {
                 <img src={lostPet.image} alt={lostPet.name} />
                 <GridListTileBar
                   title={lostPet.name}
-                  subtitle={<span>Missing for X Days</span>}
+                  subtitle={<span>Posted {moment(lostPet.createdAt).fromNow()}</span>}
                   actionIcon={
                     <IconButton aria-label={`info about ${lostPet.title}`} className={classes.icon}>
                       <CheckBox onClick={() => {foundPets(lostPet.id)}}/>  
