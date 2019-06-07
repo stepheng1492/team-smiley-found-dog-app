@@ -111,6 +111,7 @@ function LostPetModal(props) {
                     <TitlebarGridList 
                         allPets={props.allPets} 
                         state={props.state}
+                        getPets={props.getPets}
                     />
                 </div>
             </Modal>

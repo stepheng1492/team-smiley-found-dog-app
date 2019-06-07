@@ -7,6 +7,7 @@ import ListSubheader from '@material-ui/core/ListSubheader';
 import IconButton from '@material-ui/core/IconButton';
 import CheckBox from '@material-ui/core/Checkbox';
 import axios from 'axios';
+import useForceUpdate from 'use-force-update'
 import InfoIcon from '@material-ui/icons/Info';
 var moment = require('moment');
 
@@ -30,15 +31,15 @@ const useStyles = makeStyles(theme => ({
 
 
 
-function useForceUpdate() {
-  const [value, set] = useState(true);
-  return () => set(!value);
-}
+
 
 
 export default function TitlebarGridList(props) {
-  
+
+  const { getPets} = props;
+
   const forceUpdate = useForceUpdate();
+
 
   const allLostPets = props.allPets.filter((pet) => {
     return pet.found === false;
@@ -49,6 +50,7 @@ export default function TitlebarGridList(props) {
         petId,
     })
     .then((results) => console.log(results))
+    .then(getPets());
   }
 
     console.log(props);
@@ -69,7 +71,7 @@ export default function TitlebarGridList(props) {
               subtitle={<span>Posted {moment(lostPet.createdAt).fromNow()}</span>}
               actionIcon={
                 <IconButton aria-label={`info about ${lostPet.title}`} className={classes.icon}>
-                  <CheckBox onClick={() => {foundPets(lostPet.id); forceUpdate;}}/>  
+                  <CheckBox onClick={() => {foundPets(lostPet.id); forceUpdate}}/>  
                 </IconButton>
               }
             />
@@ -100,7 +102,7 @@ else {
                   subtitle={<span>Missing for X Days</span>}
                   actionIcon={
                     <IconButton aria-label={`info about ${lostPet.title}`} className={classes.icon}>
-                      <CheckBox onClick={() => {foundPets(lostPet.id)}}/>  
+                      <CheckBox onClick={() => {foundPets(lostPet.id); forceUpdate}}/>  
                     </IconButton>
                   }
                 />
