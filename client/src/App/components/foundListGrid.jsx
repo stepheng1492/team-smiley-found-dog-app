@@ -41,6 +41,7 @@ export default function TitlebarGridList(props) {
   const foundPets = (petId, found, pet, arr) => {
     pet.found = !pet.found;
     props.handleFoundClick(arr)
+    console.log(arr);
     return axios.put('/user', {
         petId,
         found: !pet.found, 
