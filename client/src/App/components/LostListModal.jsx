@@ -79,7 +79,7 @@ function LostPetModal(props) {
     };
 
     const classes = useStyles();
-    // console.log(props.state);
+    // console.log(props);
     return (
         <div>
             <Button
@@ -109,6 +109,8 @@ function LostPetModal(props) {
 
                     </Typography>
                     <TitlebarGridList 
+                        handleFoundClick={props.handleFoundClick}
+                        getPets={props.getPets}
                         allPets={props.allPets} 
                         state={props.state}
                         getPets={props.getPets}

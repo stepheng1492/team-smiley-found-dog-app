@@ -1,5 +1,5 @@
 import React from 'react';
-import Axios from 'axios';
+import axios from 'axios';
 import { Button, FormControl, Input, InputLabel } from '@material-ui/core'
 import withStyles from "@material-ui/core/styles/withStyles";
 import PetsList from './PetsList.jsx';
@@ -68,31 +68,17 @@ class Pets extends React.Component {
         // this.getFoundPets = this.getFoundPets.bind(this);
         // this.foundPets = this.foundPets.bind(this);
         this.clearSearch = this.clearSearch.bind(this);
+        this.handleFoundClick = this.handleFoundClick.bind(this);
     }
-    // this.state.pets.filter
-    // foundPets() {
-    //   return axios.put('user', {
-    //       found: true
-    //   })
-    //   .then((results) => console.log(results))
-    // }
-
-    // getFoundPets() {
-    //   return axios.get('user', {
-    //     params: {
-    //       found: this.props.pets.found
-    //     }
-    //   }).then((results) => {
-    //     let foundPets = [];
-    //       results.data.forEach(pet => foundPets.push(pet));
-    //       this.setState({
-    //         foundPets: foundPets,
-    //       })
-    //   })
-    // }
 
     componentDidMount() {
       this.getPets();
+    }
+
+    handleFoundClick(pets) {
+      this.setState({
+        pets: pets
+      })
     }
 
     // grabs information from forms by name and value entered, sets state
@@ -132,23 +118,32 @@ class Pets extends React.Component {
       const { ownerName, name, type, message, image, contact } = this.state;
       event.preventDefault();
         // post request to db with info
-        Axios.post('/user', {
+        axios.post('/user', {
           ownerName: ownerName,
           name: name,
           type: type,
           message: message,
           contact: contact,
           image: image,
-        }).then(response => console.log(response))
-
-        this.setState({
-          ownerName: '',
-          name: '',
-          type: '',
-          message: '',
-          image: '',
-          contact: '',
+        }).then(response => {
+          axios.get('/user')
+            .then(pets => {
+              let allPets = [];
+              pets.data.forEach(pet => allPets.push(pet));
+              this.setState({
+                pets: allPets,
+              })
+            })         
         })
+            this.setState({
+              ownerName: '',
+              name: '',
+              type: '',
+              message: '',
+              image: '',
+              contact: '',
+            })
+        
       }
     
       // allows widget to be displayed
@@ -168,13 +163,16 @@ class Pets extends React.Component {
 
     // gets all pets from database to show on page
     getPets() {
-      Axios.get('/user')
+      axios.get('/user')
         .then(pets => {
-          let allPets = [];
-          pets.data.forEach(pet => allPets.push(pet));
           this.setState({
-            pets: allPets,
+            pets: pets.data,
           })
+          // let allPets = [];
+          // pets.data.forEach(pet => allPets.push(pet));
+          // this.setState({
+          //   pets: allPets,
+          // })
         })
         .catch(err => console.error(err));
     }
@@ -271,6 +269,7 @@ class Pets extends React.Component {
               <PetsList pets={pets} />
             </form>
             <LostListModal
+            handleFoundClick={this.handleFoundClick}
             getPets={this.getPets}
             clearSearch={this.clearSearch}
             state={this.state}

@@ -14,15 +14,11 @@ app.set('view engine', 'ejs');
 //test get request to login page
 router.route('/gmailLogin')
         .post((req, res, next) => {
-        // console.log(req.body.result.user);
         const { displayName, email} = req.body.result.user;
-        console.log(displayName, email);
         User.findOrCreate({where: {
             name: displayName,
             email: email,
         }})
-        //send response on login get request
-        // console.log(req.body.user,'yooo');
         res.send('get session from database');
     });
 
@@ -96,5 +92,4 @@ router.route('/comments')
 
 
 
-//export router file
 module.exports = router;

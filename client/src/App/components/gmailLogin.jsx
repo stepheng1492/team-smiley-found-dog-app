@@ -13,7 +13,6 @@ function gmailLogin(props){
             // })
             axios.post('/gmailLogin', {
                 result
-            }).then((res) => {
             })
         })
     }
