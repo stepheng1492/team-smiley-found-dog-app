@@ -71,7 +71,7 @@ function LostPetModal(props) {
 
     const handleOpen = () => {
         setOpen(true);
-        props.getPets();
+        // props.getPets();
     };
 
     const handleClose = () => {
@@ -79,7 +79,6 @@ function LostPetModal(props) {
     };
 
     const classes = useStyles();
-    // console.log(props);
     return (
         <div>
             <Button

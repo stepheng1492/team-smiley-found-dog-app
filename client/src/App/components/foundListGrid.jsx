@@ -54,21 +54,24 @@ export default function TitlebarGridList(props) {
       <GridList cellHeight={180} className={classes.gridList}>
         <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>
         </GridListTile>
-        {nonLostPets.map(lostPet => (
-          <GridListTile key={lostPet.image}>
-            <img src={lostPet.image} alt={lostPet.name} />
-            <GridListTileBar
-              title={lostPet.name}
-              subtitle={<span>{lostPet.type}</span>}
-              subtitle={<span>Posted {moment(lostPet.createdAt).fromNow()}</span>}
-              actionIcon={
-                <IconButton aria-label={`info about ${lostPet.title}`} className={classes.icon}>
-                  <CheckBox onClick={() => {foundPets(lostPet.id, lostPet.found, lostPet, nonLostPets)}}/>  
-                </IconButton>
-              }
-            />
-          </GridListTile>
-        ))}
+        {nonLostPets.map(lostPet => {
+          return (
+            <GridListTile key={lostPet.image}>
+              <img src={lostPet.image} alt={lostPet.name} />
+              <GridListTileBar
+                title={lostPet.name}
+                subtitle={<span>{lostPet.type}</span>}
+                subtitle={<span>Posted {moment(lostPet.createdAt).fromNow()}</span>}
+                actionIcon={
+                  <IconButton aria-label={`info about ${lostPet.title}`} className={classes.icon}>
+                    <CheckBox onClick={() => {foundPets(lostPet.id, lostPet.found, lostPet, props.allPets)}}/>  
+                  </IconButton>
+                }
+              />
+            </GridListTile>
+          )
+        }
+        )}
       </GridList>
     </div>
   );
@@ -94,7 +97,7 @@ else {
                   subtitle={<span>Posted {moment(lostPet.createdAt).fromNow()}</span>}
                   actionIcon={
                     <IconButton aria-label={`info about ${lostPet.title}`} className={classes.icon}>
-                      <CheckBox onClick={() => { foundPets(lostPet.id, lostPet.found, lostPet, nonLostPets) }}/>  
+                      <CheckBox onClick={() => { foundPets(lostPet.id, lostPet.found, lostPet, props.allPets) }}/>  
                     </IconButton>
                   }
                 />
