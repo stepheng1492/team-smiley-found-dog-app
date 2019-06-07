@@ -97,7 +97,7 @@ router.route('/texts')
         client.messages.create({
             to: req.body.contact,
             from: '+15045968529',
-            body: `Hey! This is an alert from FoundPets.com that someone has found ${req.body.ownerName}!`
+            body: `Hey! This is an alert from FoundPets.com that someone has found your pet!`
         });
     });
 
