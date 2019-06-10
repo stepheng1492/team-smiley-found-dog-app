@@ -45,10 +45,10 @@ function Dash(props) {
                     brightness_6
             </i>
                 <Typography component="h1" variant="h5">
-                    Welcome Back!
+                    Paws And Found
                 </Typography>
 
-                <Typography component="h1" variant="h5">
+                <Typography component="h1" variant="h6">
                     Lost Pet?
                 </Typography>
                 <Pets />

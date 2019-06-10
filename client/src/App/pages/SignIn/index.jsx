@@ -46,7 +46,7 @@ function SignIn(props) {
                     <LockOutlinedIcon />
                 </Avatar>
                 <Typography component="h1" variant="h5">
-                    Found Dog Sign-In
+                    Paws And Found Sign In
                 </Typography>
                 <form className={classes.form}>
                     <FormControl margin="normal" required fullWidth>
